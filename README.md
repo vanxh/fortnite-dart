@@ -1,25 +1,44 @@
 # Fortnite
+
 A fortnite api manager library for dart inspired by [fnbr.js](https://github.com/fnbrjs/fnbr.js).
 
 [![pub.dev Version](https://img.shields.io/pub/v/fortnite.svg)](https://pub.dev/packages/fortnite/)
 [![Discord Server](https://discord.com/api/guilds/797736897941995540/widget.png)](https://discord.gg/fishstick)
 
 ## Installation
+
 ```
 dart pub add fortnite
 ```
 
 ## Usage Example
+
 ```dart
-// TODO
+import "package:fortnite/fortnite.dart";
+
+void main() {
+    final Client client = Client(
+        ClientOptions(
+            log: true,
+            deviceAuth: DeviceAuth(
+                accountId: "",
+                deviceId: "",
+                secret: "",
+            ),
+        ),
+    );
+    // rest of your code
+}
 ```
 
 ## Links
-- [Discord](https://discord.gg/fishstick)
-- [pub.dev](https://pub.dev/packages/fortnite/)
-- [Documentation](https://pub.dev/documentation/fortnite/latest/)
+
+-   [Discord](https://discord.gg/fishstick)
+-   [pub.dev](https://pub.dev/packages/fortnite/)
+-   [Documentation](https://pub.dev/documentation/fortnite/latest/)
 
 ## License
+
 Copyright 2021 Vanxh
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

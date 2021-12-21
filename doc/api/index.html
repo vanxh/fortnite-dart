@@ -52,7 +52,21 @@
 <pre class="language-dart"><code>dart pub add fortnite
 </code></pre>
 <h2 id="usage-example">Usage Example</h2>
-<pre class="language-dart"><code class="language-dart">// TODO
+<pre class="language-dart"><code class="language-dart">import "package:fortnite/fortnite.dart";
+
+void main() {
+    final Client client = Client(
+        ClientOptions(
+            log: true,
+            deviceAuth: DeviceAuth(
+                accountId: "",
+                deviceId: "",
+                secret: "",
+            ),
+        ),
+    );
+    // rest of your code
+}
 </code></pre>
 <h2 id="links">Links</h2>
 <ul>
@@ -161,7 +175,7 @@
 <footer>
   <span class="no-break">
     fortnite
-      1.0.3
+      1.0.4
   </span>
 
   
