@@ -7,11 +7,11 @@
 -   Added more MCP operations.
 -   Added auth clients.
 
-# 1.0.2
+## 1.0.2
 
 -   Better documentation for library.
 
-# 1.0.3
+## 1.0.3
 
 -   HTTP library with send , get , post methods.
 -   Custom logger for client.
