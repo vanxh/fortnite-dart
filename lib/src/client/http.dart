@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'client.dart';
+import 'package:fortnite/src/structures/http_response.dart';
 
 class HTTP {
   /// 5xx Server Errors retry limit
@@ -18,5 +19,64 @@ class HTTP {
     }
 
     client.log(LogLevel.info, "Initialized HTTP client object");
+  }
+
+  /// Send request
+  Future<HttpResponse> send({
+    required String method,
+    required String url,
+    required Map<String, dynamic> headers,
+    dynamic body,
+    ResponseType responseType = ResponseType.json,
+    int retries = 0,
+  }) async {
+    try {
+      var res = await _dioClient.fetch(RequestOptions(
+        method: method,
+        path: url,
+        headers: headers,
+        data: body,
+        responseType: responseType,
+      ));
+
+      return HttpResponse(
+        success: true,
+        data: res.data,
+      );
+    } on DioError catch (e) {
+      int status = e.response?.statusCode ?? 0;
+
+      if (status.toString().startsWith("5") && retries < restRetryLimit) {
+        return await send(
+          method: method,
+          url: url,
+          headers: headers,
+          body: body,
+          responseType: responseType,
+          retries: retries + 1,
+        );
+      }
+
+      if (status == 429 ||
+          e.response?.data?["errorCode"] ==
+              "errors.com.epicgames.common.throttled") {
+        int retryAfter = 5;
+        await Future.delayed(Duration(seconds: retryAfter + 5), () async {
+          return await send(
+            method: method,
+            url: url,
+            headers: headers,
+            body: body,
+            responseType: responseType,
+            retries: retries + 1,
+          );
+        });
+      }
+
+      return HttpResponse(
+        success: false,
+        error: e.response?.data ?? e.message,
+      );
+    }
   }
 }

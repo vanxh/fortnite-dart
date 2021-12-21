@@ -29,7 +29,7 @@ class Client {
     Logger.root.level = Level.ALL;
     Logger.root.onRecord.listen((record) {
       print(
-          '${record.time.toString().split(" ")[1].split(".")[0]} [${record.level.name}] [Fortnite Client] ${record.message}');
+          '${record.time.toString().split(" ")[1].split(".")[0]} [${record.level.name}] ${record.message}');
     });
 
     /// initialize http object
