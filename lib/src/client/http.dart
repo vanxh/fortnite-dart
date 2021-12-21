@@ -30,6 +30,8 @@ class HTTP {
     ResponseType responseType = ResponseType.json,
     int retries = 0,
   }) async {
+    int start = DateTime.now().millisecondsSinceEpoch;
+
     try {
       var res = await _dioClient.fetch(RequestOptions(
         method: method,
@@ -39,11 +41,21 @@ class HTTP {
         responseType: responseType,
       ));
 
+      client.log(
+        LogLevel.debug,
+        "$method $url [${((DateTime.now().millisecondsSinceEpoch - start) / 1000).toStringAsFixed(2)}s]: ${res.statusCode ?? "???"} ${res.statusMessage ?? ""}",
+      );
+
       return HttpResponse(
         success: true,
         data: res.data,
       );
     } on DioError catch (e) {
+      client.log(
+        LogLevel.debug,
+        "$method $url [${((DateTime.now().millisecondsSinceEpoch - start) / 1000).toStringAsFixed(2)}s]: ${e.response?.statusCode ?? "???"} ${e.response?.statusMessage ?? ""}",
+      );
+
       int status = e.response?.statusCode ?? 0;
 
       if (status.toString().startsWith("5") && retries < restRetryLimit) {
