@@ -17,6 +17,7 @@ dart pub add fortnite
 ## Links
 - [Discord](https://discord.gg/fishstick)
 - [pub.dev](https://pub.dev/packages/fortnite/)
+- [Documentation](https://pub.dev/documentation/fortnite/latest/)
 
 ## License
 Copyright 2021 Vanxh
