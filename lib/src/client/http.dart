@@ -79,4 +79,30 @@ class HTTP {
       );
     }
   }
+
+  /// get request
+  Future<HttpResponse> get({
+    required String url,
+    required Map<String, dynamic> headers,
+  }) async {
+    return await send(
+      method: "GET",
+      url: url,
+      headers: headers,
+    );
+  }
+
+  /// post request
+  Future<HttpResponse> post({
+    required String url,
+    required Map<String, dynamic> headers,
+    dynamic body,
+  }) async {
+    return await send(
+      method: "POST",
+      url: url,
+      headers: headers,
+      body: body,
+    );
+  }
 }
