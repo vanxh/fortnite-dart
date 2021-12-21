@@ -16,3 +16,10 @@
 -   HTTP library with send , get , post methods.
 -   Custom logger for client.
 -   Basic client and client options.
+
+## 1.0.4
+
+-   Added device auth to client options.
+-   Added auth class.
+-   Added session manager.
+-   Epic api request send method.

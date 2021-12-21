@@ -1,8 +1,6 @@
 import 'package:fortnite/fortnite.dart';
-import 'package:fortnite/src/structures/client_options.dart';
-import 'package:fortnite/src/structures/device_auth.dart';
 
-void main() {
+void main() async {
   Client client = Client(
     options: ClientOptions(
       log: true,
@@ -13,4 +11,13 @@ void main() {
       ),
     ),
   );
+  // dynamic res = await client.send(
+  //   method: "POST",
+  //   url: MCP(
+  //     FortniteProfile.campaign,
+  //     accountId: client.accountId,
+  //   ).QueryProfile,
+  //   body: {},
+  // );
+  // print(res);
 }

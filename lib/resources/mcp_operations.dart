@@ -10,10 +10,45 @@ class MCP {
   String accountId;
 
   /// profile id to be used for mcp operations
-  FortniteProfile profileId;
+  final FortniteProfile _profileId;
+  late String profileId;
 
   /// Get mcp request url
-  MCP({required this.accountId, required this.profileId});
+  MCP(this._profileId, {required this.accountId}) {
+    switch (_profileId) {
+      case FortniteProfile.athena:
+        profileId = "athena";
+        break;
+
+      case FortniteProfile.campaign:
+        profileId = "campaign";
+        break;
+
+      case FortniteProfile.common_core:
+        profileId = "common_core";
+        break;
+
+      case FortniteProfile.common_public:
+        profileId = "common_public";
+        break;
+
+      case FortniteProfile.outpost0:
+        profileId = "outpost0";
+        break;
+
+      case FortniteProfile.theater0:
+        profileId = "theater0";
+        break;
+
+      case FortniteProfile.theater1:
+        profileId = "theater1";
+        break;
+
+      case FortniteProfile.theater2:
+        profileId = "theater2";
+        break;
+    }
+  }
 
   /// Get mcp request url
   String url({

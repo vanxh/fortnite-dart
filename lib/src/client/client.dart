@@ -1,6 +1,9 @@
 import 'package:logging/logging.dart';
-import 'package:fortnite/src/structures/client_options.dart';
 import 'package:fortnite/src/client/http.dart';
+import 'package:fortnite/src/structures/client_options.dart';
+import 'package:fortnite/src/structures/http_response.dart';
+import 'package:fortnite/resources/auth_clients.dart';
+import 'auth.dart';
 
 enum LogLevel {
   debug,
@@ -9,6 +12,12 @@ enum LogLevel {
   error,
   wtf,
 }
+
+List<String> invalidTokenErrorCodes = [
+  'errors.com.epicgames.common.authentication.token_verification_failed',
+  'errors.com.epicgames.common.oauth.invalid_token',
+  'errors.com.epicgames.common.authentication.authentication_failed',
+];
 
 class Client {
   /// options for the client
@@ -20,13 +29,19 @@ class Client {
   /// http client for client
   late final HTTP http;
 
+  late FortniteAuth auth;
+
+  /// session for the account
+  String session = "";
+
   /// the main client object
   Client({
     required ClientOptions options,
+    String overrideSession = "",
   }) {
     _clientOptions = options;
 
-    Logger.root.level = Level.ALL;
+    Logger.root.level = _clientOptions.logLevel;
     Logger.root.onRecord.listen((record) {
       print(
           '${record.time.toString().split(" ")[1].split(".")[0]} [${record.level.name}] ${record.message}');
@@ -37,8 +52,19 @@ class Client {
       client: this,
     );
 
+    /// initialize auth object
+    auth = FortniteAuth(this);
+
+    if (overrideSession != "") {
+      session = overrideSession;
+    }
+
     log(LogLevel.info, "Initialized fortnite client object");
   }
+
+  String get accountId => _clientOptions.deviceAuth.accountId;
+  String get deviceId => _clientOptions.deviceAuth.deviceId;
+  String get secret => _clientOptions.deviceAuth.secret;
 
   /// log
   void log(LogLevel l, String message) {
@@ -64,6 +90,57 @@ class Client {
       case LogLevel.wtf:
         _logger.shout(message);
         break;
+    }
+  }
+
+  /// Refresh session of the account
+  Future<dynamic> refreshSession() async {
+    log(LogLevel.debug,
+        "Refreshing session for ${_clientOptions.deviceAuth.accountId}");
+
+    session = await auth.createOAuthToken(
+      grantType: "device_auth",
+      authClient: AuthClients().fortniteIOSGameClient,
+      grantData:
+          "account_id=${_clientOptions.deviceAuth.accountId}&device_id=${_clientOptions.deviceAuth.deviceId}&secret=${_clientOptions.deviceAuth.secret}",
+    );
+
+    return session;
+  }
+
+  /// send request to epic games
+  Future<dynamic> send({
+    required String method,
+    required String url,
+    dynamic body,
+    bool dontRetry = false,
+  }) async {
+    HttpResponse res = await http.send(
+      method: method,
+      url: url,
+      headers: {
+        "User-Agent": _clientOptions.userAgent,
+        "Authorization": "bearer $session",
+      },
+      body: body,
+    );
+
+    if (res.success) {
+      return res.data;
+    } else {
+      String errorCode = res.error["errorCode"];
+
+      if (invalidTokenErrorCodes.contains(errorCode) && !dontRetry) {
+        await refreshSession();
+        return await send(
+          method: method,
+          url: url,
+          body: body,
+          dontRetry: true,
+        );
+      }
+
+      throw Exception(res.error["errorCode"] ?? res.error);
     }
   }
 }

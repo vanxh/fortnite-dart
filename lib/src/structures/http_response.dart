@@ -1,7 +1,7 @@
 class HttpResponse {
   late bool success;
   late dynamic data;
-  late String error;
+  late dynamic error;
 
-  HttpResponse({required this.success, this.data, this.error = ""});
+  HttpResponse({required this.success, this.data, this.error});
 }
