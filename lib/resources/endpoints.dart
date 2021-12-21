@@ -37,4 +37,11 @@ class Endpoints {
 
   String get fortniteParty =>
       "${EpicServices().partyService}/party/api/v1/Fortnite";
+
+  String get friends => "${EpicServices().friendService}/friends/api/v1";
+  String get addFriend =>
+      "${EpicServices().friendService}/friends/api/public/friends";
+  String get removeFriend => "${EpicServices().friendService}/friends/api/v1";
+  String get blockFriend =>
+      "${EpicServices().friendService}/friends/api/public/blocklist";
 }

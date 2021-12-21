@@ -12,4 +12,6 @@ class EpicServices {
   String get partyService => "https://party-service-prod.ol.epicgames.com";
   String get userSearchService =>
       "https://user-search-service-prod.ol.epicgames.com";
+  String get friendService =>
+      "https://friends-public-service-prod.ol.epicgames.com";
 }
