@@ -6,3 +6,7 @@
 
 -   Added more MCP operations.
 -   Added auth clients.
+
+# 1.0.2
+
+-   Better documentation for library.
