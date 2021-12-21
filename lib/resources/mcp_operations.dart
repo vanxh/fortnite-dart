@@ -37,4 +37,30 @@ class MCP {
   String get PurchaseHomebaseNode => url(operation: "PurchaseHomebaseNode");
   String get OpenCardPackBatch => url(operation: "OpenCardPackBatch");
   String get OpenCardPack => url(operation: "OpenCardPack");
+  String get UnslotAllWorkers => url(operation: "UnslotAllWorkers");
+  String get UnassignAllSquads => url(operation: "UnassignAllSquads");
+  String get TransmogItem => url(operation: "TransmogItem");
+  String get SkipTutorial => url(operation: "SkipTutorial");
+  String get ModifyMission => url(operation: "ModifyMission");
+  String get IssueFriendCode => url(operation: "IssueFriendCode");
+  String get IncrementNamedCounterStat =>
+      url(operation: "IncrementNamedCounterStat");
+  String get GetMcpTimeForLogin => url(operation: "GetMcpTimeForLogin");
+  String get EquipCharCosmetic => url(operation: "EquipCharCosmetic");
+  String get EndPrimaryMission => url(operation: "EndPrimaryMission");
+  String get EarnScore => url(operation: "EarnScore");
+  String get ConvertItem => url(operation: "ConvertItem");
+  String get ConsumeItems => url(operation: "ConsumeItems");
+  String get CollectExpedition => url(operation: "CollectExpedition");
+  String get ClaimMissionAlertRewards =>
+      url(operation: "ClaimMissionAlertRewards");
+  String get ClaimCollectionBookRewards =>
+      url(operation: "ClaimCollectionBookRewards");
+  String get ClaimCollectedResources =>
+      url(operation: "ClaimCollectedResources");
+  String get AssignWorkerToSquadBatch =>
+      url(operation: "AssignWorkerToSquadBatch");
+  String get AssignWorkerToSquad => url(operation: "AssignWorkerToSquad");
+  String get ApplyAlteration => url(operation: "ApplyAlteration");
+  String get ActivateConsumable => url(operation: "ActivateConsumable");
 }
