@@ -10,3 +10,9 @@
 # 1.0.2
 
 -   Better documentation for library.
+
+# 1.0.3
+
+-   HTTP library with send , get , post methods.
+-   Custom logger for client.
+-   Basic client and client options.

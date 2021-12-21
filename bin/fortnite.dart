@@ -7,5 +7,4 @@ void main() {
       log: true,
     ),
   );
-  print(DateTime.now().millisecondsSinceEpoch);
 }
