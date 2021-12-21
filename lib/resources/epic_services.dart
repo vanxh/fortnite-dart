@@ -10,4 +10,6 @@ class EpicServices {
   String get fortniteService =>
       "https://fortnite-public-service-prod11.ol.epicgames.com";
   String get partyService => "https://party-service-prod.ol.epicgames.com";
+  String get userSearchService =>
+      "https://user-search-service-prod.ol.epicgames.com";
 }

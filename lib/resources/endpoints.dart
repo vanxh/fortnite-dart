@@ -14,7 +14,19 @@ class Endpoints {
   String get calderaToken =>
       "${EpicServices().calderaService}/caldera/api/v1/launcher/racp";
 
+  String get accountMultiple =>
+      "${EpicServices().accountService}/account/api/public/account";
+  String get accountDisplayName =>
+      "${EpicServices().accountService}/account/api/public/account/displayName";
+  String get accountId =>
+      "${EpicServices().accountService}/account/api/public/account";
+  String get accountEmail =>
+      "${EpicServices().accountService}/account/api/public/account/email";
+  String get userSearch => "${EpicServices().userSearchService}/api/v1/search";
+
   String get brStats => "${EpicServices().statsService}/statsproxy/api/statsv2";
+  String get mcp =>
+      "${EpicServices().fortniteService}/fortnite/api/game/v2/profile";
 
   String get fortniteStatus =>
       "${EpicServices().lightswitchService}/lightswitch/api/service/bulk/status?serviceId=Fortnite";
@@ -22,4 +34,7 @@ class Endpoints {
       "${EpicServices().fortniteService}/fortnite/api/storefront/v2/catalog";
   String get eventFlags =>
       "${EpicServices().fortniteService}/fortnite/api/calendar/v1/timeline";
+
+  String get fortniteParty =>
+      "${EpicServices().partyService}/party/api/v1/Fortnite";
 }
