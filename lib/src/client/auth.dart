@@ -22,6 +22,8 @@ class FortniteAuth {
       headers: {
         "Authorization": "basic $authClient",
         "Content-Type": "application/x-www-form-urlencoded",
+        "User-Agent":
+            "Fortnite/++Fortnite+Release-18.21-CL-17811397 Android/11",
       },
       body: "grant_type=$grantType&$grantData&token_type=$tokenType",
     );

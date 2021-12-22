@@ -29,3 +29,4 @@
 -   Added utils.
 -   parseAuthorizationCode method to parse any kind of authorization code string.
 -   getAuthorizationCodeURL method to generate a link to get authorization code from.
+-   authenticateWithAuthorizationCode method to create a device auth object by authentication using authorization code.

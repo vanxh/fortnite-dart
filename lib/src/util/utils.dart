@@ -1,3 +1,8 @@
+import "package:dio/dio.dart";
+import "../structures/device_auth.dart";
+import "package:fortnite/resources/endpoints.dart";
+import "package:fortnite/resources/auth_clients.dart";
+
 /// parses an authorization code
 dynamic parseAuthorizationCode(String authCode) {
   if (authCode.length == 32) {
@@ -21,4 +26,53 @@ String getAuthorizationCodeURL({
       "https://www.epicgames.com/id/api/redirect?clientId=$clientId&responseType=code${forceLogin ? "&prompt=login" : ""}";
 
   return "$loginURL?redirectUrl=${Uri.encodeComponent(redirectURL)}";
+}
+
+/// creates a device auth object with authorization code
+Future<DeviceAuth> authenticateWithAuthorizationCode(
+    String authorizationCode) async {
+  if (parseAuthorizationCode(authorizationCode) == null) {
+    throw "That is not a valid authorization code.";
+  }
+
+  try {
+    Response<dynamic> res = await Dio().post(
+      Endpoints().oauthTokenCreate,
+      options: Options(
+        headers: {
+          "Authorization": "basic ${AuthClients().fortniteIOSGameClient}",
+          "User-Agent":
+              "Fortnite/++Fortnite+Release-18.21-CL-17811397 Android/11",
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      ),
+      data:
+          "grant_type=authorization_code&code=${parseAuthorizationCode(authorizationCode)}&token_type=eg1",
+    );
+
+    String accessToken = res.data["access_token"];
+    String accountId = res.data["account_id"];
+    String displayName = res.data["displayName"] ?? accountId;
+
+    Response<dynamic> res2 = await Dio().post(
+      "${Endpoints().oauthDeviceAuth}/$accountId/deviceAuth",
+      options: Options(
+        headers: {
+          "Authorization": "bearer $accessToken",
+          "User-Agent":
+              "Fortnite/++Fortnite+Release-18.21-CL-17811397 Android/11",
+          "Content-Type": "application/json",
+        },
+      ),
+    );
+
+    return DeviceAuth(
+      accountId: accountId,
+      deviceId: res2.data["deviceId"],
+      secret: res2.data["secret"],
+      displayName: displayName,
+    );
+  } on DioError catch (e) {
+    throw e.response?.data["errorMessage"] ?? "Unknown Error";
+  }
 }
