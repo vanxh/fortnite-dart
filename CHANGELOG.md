@@ -23,3 +23,9 @@
 -   Added auth class.
 -   Added session manager.
 -   Epic api request send method.
+
+## 1.0.5
+
+-   Added utils.
+-   parseAuthorizationCode method to parse any kind of authorization code string.
+-   getAuthorizationCodeURL method to generate a link to get authorization code from.

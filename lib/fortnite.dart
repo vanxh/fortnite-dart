@@ -8,5 +8,8 @@ export "src/structures/client_options.dart";
 export "src/structures/device_auth.dart";
 export "src/structures/http_response.dart";
 
+export "src/util/utils.dart";
+
 export "src/client/client.dart";
 export "src/client/http.dart";
+export "src/client/auth.dart";

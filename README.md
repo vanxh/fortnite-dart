@@ -7,9 +7,20 @@ A fortnite api manager library for dart inspired by [fnbr.js](https://github.com
 
 ## Installation
 
+Add this to your package's `pubspec.yaml` file:
+
+```yaml
+dependencies:
+    fortnite_api: any
 ```
-dart pub add fortnite
+
+then run in terminal
+
 ```
+dart pub get
+```
+
+or use your prefferd text editor or IDE to install the plugin.
 
 ## Usage Example
 
