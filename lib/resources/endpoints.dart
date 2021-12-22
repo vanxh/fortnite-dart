@@ -1,4 +1,4 @@
-import 'epic_services.dart';
+import "epic_services.dart";
 
 class Endpoints {
   String get _oAuth => "${EpicServices().accountService}/account/api/oauth";

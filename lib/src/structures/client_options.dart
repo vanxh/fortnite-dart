@@ -1,5 +1,5 @@
-import 'package:logging/logging.dart';
-import 'device_auth.dart';
+import "package:logging/logging.dart";
+import "device_auth.dart";
 
 class ClientOptions {
   /// should log

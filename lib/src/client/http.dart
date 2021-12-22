@@ -1,6 +1,6 @@
-import 'package:dio/dio.dart';
-import 'client.dart';
-import 'package:fortnite/src/structures/http_response.dart';
+import "package:dio/dio.dart";
+import "client.dart";
+import "package:fortnite/src/structures/http_response.dart";
 
 class HTTP {
   /// 5xx Server Errors retry limit
@@ -15,7 +15,7 @@ class HTTP {
   /// HTTP constructor
   HTTP({required this.client, this.restRetryLimit = 5}) {
     if (restRetryLimit <= 0) {
-      throw Exception('restRetryLimit must be greater than 0');
+      throw Exception("restRetryLimit must be greater than 0");
     }
 
     client.log(LogLevel.info, "Initialized HTTP client object");

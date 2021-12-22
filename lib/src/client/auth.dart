@@ -1,6 +1,6 @@
-import 'client.dart';
-import 'package:fortnite/src/structures/http_response.dart';
-import 'package:fortnite/resources/endpoints.dart';
+import "client.dart";
+import "package:fortnite/src/structures/http_response.dart";
+import "package:fortnite/resources/endpoints.dart";
 
 class FortniteAuth {
   /// The master client

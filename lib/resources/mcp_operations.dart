@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'endpoints.dart';
-import 'fortnite_profile_ids.dart';
+import "endpoints.dart";
+import "fortnite_profile_ids.dart";
 
 class MCP {
   final String _baseURL = Endpoints().mcp;

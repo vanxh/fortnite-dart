@@ -1,9 +1,9 @@
-import 'package:logging/logging.dart';
-import 'package:fortnite/src/client/http.dart';
-import 'package:fortnite/src/structures/client_options.dart';
-import 'package:fortnite/src/structures/http_response.dart';
-import 'package:fortnite/resources/auth_clients.dart';
-import 'auth.dart';
+import "package:logging/logging.dart";
+import "package:fortnite/src/client/http.dart";
+import "package:fortnite/src/structures/client_options.dart";
+import "package:fortnite/src/structures/http_response.dart";
+import "package:fortnite/resources/auth_clients.dart";
+import "auth.dart";
 
 enum LogLevel {
   debug,
@@ -14,9 +14,9 @@ enum LogLevel {
 }
 
 List<String> invalidTokenErrorCodes = [
-  'errors.com.epicgames.common.authentication.token_verification_failed',
-  'errors.com.epicgames.common.oauth.invalid_token',
-  'errors.com.epicgames.common.authentication.authentication_failed',
+  "errors.com.epicgames.common.authentication.token_verification_failed",
+  "errors.com.epicgames.common.oauth.invalid_token",
+  "errors.com.epicgames.common.authentication.authentication_failed",
 ];
 
 class Client {
