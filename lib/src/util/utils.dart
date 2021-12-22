@@ -12,7 +12,7 @@ dynamic parseAuthorizationCode(String authCode) {
 /// [forceLogin] - if true, the url will force the user to login to an account before getting its authorization code.
 ///
 /// [clientId] - the client id to use (by default fortniteIOSClient that used by the library).
-dynamic getAuthorizationCodeURL({
+String getAuthorizationCodeURL({
   bool forceLogin = false,
   String clientId = "3446cd72694c4a4485d81b77adbb2141",
 }) {
