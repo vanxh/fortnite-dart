@@ -20,7 +20,7 @@ class Item {
   late dynamic series;
   late int price;
   late dynamic added;
-  late bool builtInEmote;
+  late dynamic builtInEmote;
   late bool copyrightedAudio;
   late bool upcoming;
   late bool reactive;
@@ -39,6 +39,9 @@ class Item {
   late dynamic itemSet;
 
   Item(dynamic item) {
+    if (item["interest"] is int) {
+      item["interest"] = item["interest"].toDouble();
+    }
     id = item["id"] as String;
     type = item["type"];
     name = item["name"] as String;
@@ -47,13 +50,13 @@ class Item {
     series = item["series"];
     price = item["price"] as int;
     added = item["added"];
-    builtInEmote = item["builtInEmote"] as bool;
+    builtInEmote = item["builtInEmote"];
     copyrightedAudio = item["copyrightedAudio"] as bool;
     upcoming = item["upcoming"] as bool;
     reactive = item["reactive"] as bool;
     releaseDate = item["releaseDate"];
     lastAppearance = item["lastAppearance"];
-    interest = item["interest"] as double;
+    interest = item["interest"];
     icon = item["images"]["icon"] ?? "";
     featured = item["images"]["featured"] ?? "";
     bg = item["images"]["background"] ?? "";

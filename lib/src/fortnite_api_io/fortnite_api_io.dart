@@ -1,4 +1,5 @@
 import "package:dio/dio.dart";
+import 'package:fortnite/src/fortnite_api_io/structures/items.dart';
 import "./structures/challenges.dart";
 
 class FortniteApiIo {
@@ -95,5 +96,15 @@ class FortniteApiIo {
     );
 
     return ChallengeResponse(data);
+  }
+
+  Future<ItemsResponse> getItems() async {
+    final data = await _send(
+      apiVersion: "v2",
+      endpoint: "items/list",
+      query: [],
+    );
+
+    return ItemsResponse(data);
   }
 }
