@@ -24,7 +24,7 @@ void main() async {
     ),
   );
 
-  print(client.accountId); // print the account id of the client
+  print(client.displayName); // print the account id of the client
 
   // rest of your code
 }

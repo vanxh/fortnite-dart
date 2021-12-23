@@ -32,3 +32,5 @@
 -   authenticateWithAuthorizationCode method to create a device auth object by authentication using authorization code.
 
 ## 1.0.6
+
+-   Display name getter to client.
