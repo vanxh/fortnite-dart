@@ -107,4 +107,14 @@ class FortniteApiIo {
 
     return ItemsResponse(data);
   }
+
+  Future<ItemsResponse> getUpcomingItems() async {
+    final data = await _send(
+      apiVersion: "v2",
+      endpoint: "items/upcoming",
+      query: [],
+    );
+
+    return ItemsResponse(data);
+  }
 }
