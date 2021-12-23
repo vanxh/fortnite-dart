@@ -34,3 +34,5 @@
 ## 1.0.6
 
 -   Display name getter to client.
+-   FortniteApiIo manager.
+-   Get challenges method in FortniteApiIo class.
