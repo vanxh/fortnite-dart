@@ -62,6 +62,7 @@ class Client {
     log(LogLevel.info, "Initialized fortnite client object");
   }
 
+  String get displayName => _clientOptions.deviceAuth.displayName;
   String get accountId => _clientOptions.deviceAuth.accountId;
   String get deviceId => _clientOptions.deviceAuth.deviceId;
   String get secret => _clientOptions.deviceAuth.secret;
@@ -109,6 +110,8 @@ class Client {
   }
 
   /// send request to epic games
+  ///
+  /// [method] method request to [url] with [body] body
   Future<dynamic> send({
     required String method,
     required String url,
