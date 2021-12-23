@@ -37,3 +37,7 @@
 -   FortniteApiIo manager.
 -   Get challenges method in FortniteApiIo class.
 -   Get items method in FortniteApiIo class.
+
+## 1.0.7
+
+-   Get item data method to FortniteApiIo class.

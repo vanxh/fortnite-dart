@@ -37,6 +37,9 @@ class Item {
   late List<dynamic> apiTags;
   late dynamic battlepass;
   late dynamic itemSet;
+  late List<dynamic> shopHistory;
+  late dynamic displayAssets;
+  late dynamic styles;
 
   Item(dynamic item) {
     if (item["interest"] is int) {
@@ -67,5 +70,12 @@ class Item {
     apiTags = item["apiTags"] ?? [];
     battlepass = item["battlepass"];
     itemSet = item["set"];
+    if (item["shopHistory"] != null && item["shopHistory"] is List) {
+      shopHistory = item["shopHistory"];
+    } else {
+      shopHistory = [];
+    }
+    displayAssets = item["displayAssets"];
+    styles = item["styles"];
   }
 }

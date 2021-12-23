@@ -1,6 +1,7 @@
 import "package:dio/dio.dart";
-import 'package:fortnite/src/fortnite_api_io/structures/items.dart';
+import "./structures/items.dart";
 import "./structures/challenges.dart";
+import "./structures/item_sets.dart";
 
 class FortniteApiIo {
   /// The base URL for the API.
@@ -116,5 +117,25 @@ class FortniteApiIo {
     );
 
     return ItemsResponse(data);
+  }
+
+  Future<Item> getItemData(String itemId) async {
+    final data = await _send(
+      apiVersion: "v2",
+      endpoint: "items/get?id=$itemId",
+      query: [],
+    );
+
+    return Item(data["item"]);
+  }
+
+  Future<ItemSetsResponse> getItemSets() async {
+    final data = await _send(
+      apiVersion: "v2",
+      endpoint: "items/sets",
+      query: [],
+    );
+
+    return ItemSetsResponse(data);
   }
 }
