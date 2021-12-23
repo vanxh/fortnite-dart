@@ -24,7 +24,7 @@ or use your prefferd text editor or IDE to install the plugin.
 
 ## Usage Example
 
-Fortnite Package Usage:
+Main Fortnite Package Usage:
 
 ```dart
 import "package:fortnite/fortnite.dart";
@@ -58,7 +58,7 @@ void main() async {
 }
 ```
 
-[FortniteApiIo](https://fortniteapi.io) Usage:
+[FortniteApi.io](https://fortniteapi.io) Package Usage:
 
 ```dart
 import "package:fortnite/fortnite_api_io.dart";
