@@ -24,6 +24,8 @@ or use your prefferd text editor or IDE to install the plugin.
 
 ## Usage Example
 
+Fortnite Package Usage:
+
 ```dart
 import "package:fortnite/fortnite.dart";
 import "package:logging/logging.dart";
@@ -53,6 +55,21 @@ void main() async {
   print(client.accountId); // print the account id of the client
 
   // rest of your code
+}
+```
+
+[FortniteApiIo](https://fortniteapi.io) Usage:
+
+```dart
+import "package:fortnite/fortnite_api_io.dart";
+
+void main() async {
+  final FortniteApiIo fn = FortniteApiIo(
+    apiKey: "YOUR API KEY",
+  );
+
+  ChallengeResponse c = await fn.getChallenges();
+  print("There are ${c.bundles.length} challenge bundles available.");
 }
 ```
 
