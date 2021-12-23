@@ -13,3 +13,5 @@ export "src/util/utils.dart";
 export "src/client/client.dart";
 export "src/client/http.dart";
 export "src/client/auth.dart";
+
+export "src/fortnite_api_io/fortnite_api_io.dart";
