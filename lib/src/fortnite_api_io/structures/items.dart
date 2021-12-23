@@ -12,6 +12,7 @@ class ItemsResponse {
 }
 
 class Item {
+  late String mainId;
   late String id;
   late dynamic type;
   late String name;

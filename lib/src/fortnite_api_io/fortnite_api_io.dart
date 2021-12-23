@@ -2,6 +2,8 @@ import "package:dio/dio.dart";
 import "./structures/items.dart";
 import "./structures/challenges.dart";
 import "./structures/item_sets.dart";
+import "./structures/rarities.dart";
+import "./structures/shop.dart";
 
 class FortniteApiIo {
   /// The base URL for the API.
@@ -137,5 +139,25 @@ class FortniteApiIo {
     );
 
     return ItemSetsResponse(data);
+  }
+
+  Future<RaritiesResponse> getRarities() async {
+    final data = await _send(
+      apiVersion: "v2",
+      endpoint: "rarities",
+      query: [],
+    );
+
+    return RaritiesResponse(data);
+  }
+
+  Future<ShopResponse> getShop() async {
+    final data = await _send(
+      apiVersion: "v2",
+      endpoint: "shop",
+      query: [],
+    );
+
+    return ShopResponse(data);
   }
 }

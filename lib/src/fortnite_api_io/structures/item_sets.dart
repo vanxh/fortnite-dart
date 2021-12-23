@@ -8,10 +8,12 @@ class ItemSetsResponse {
     lang = res["lang"];
 
     for (dynamic item in res["sets"]) {
-      sets.add(ItemSet(
-        name: item["name"] ?? "",
-        id: item["id"] ?? "",
-      ));
+      sets.add(
+        ItemSet(
+          name: item["name"] ?? "",
+          id: item["id"] ?? "",
+        ),
+      );
     }
   }
 }

@@ -41,3 +41,6 @@
 ## 1.0.7
 
 -   Get item data method to FortniteApiIo class.
+-   Get item sets method to FortniteApiIo class.
+-   Get rarities method to FortniteApiIo class.
+-   Get shop method to FortniteApiIo class.
