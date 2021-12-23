@@ -2,6 +2,7 @@ import "client.dart";
 import "package:fortnite/src/structures/http_response.dart";
 import "package:fortnite/resources/endpoints.dart";
 
+/// fortnite auth library
 class FortniteAuth {
   /// The master client
   late final Client _client;

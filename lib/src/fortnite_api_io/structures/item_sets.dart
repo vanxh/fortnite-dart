@@ -1,3 +1,4 @@
+/// item sets response
 class ItemSetsResponse {
   late bool result = false;
   late String lang = "en";
@@ -18,6 +19,7 @@ class ItemSetsResponse {
   }
 }
 
+/// fortnite item set
 class ItemSet {
   late String id;
   late String name;

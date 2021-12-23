@@ -2,6 +2,7 @@ import "package:dio/dio.dart";
 import "client.dart";
 import "package:fortnite/src/structures/http_response.dart";
 
+/// custom HTTP class
 class HTTP {
   /// 5xx Server Errors retry limit
   int restRetryLimit;

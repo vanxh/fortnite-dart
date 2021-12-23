@@ -53,22 +53,28 @@
       
 
 <span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../fortnite_api_io/ChallengeResponse-class.html">ChallengeResponse</a></span>&gt;</span></span>
-<span class="name ">getChallenges</span>(<wbr>)
+<span class="name ">getChallenges</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getChallenges-param-season">{<span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">season</span> = <span class="default-value">&quot;current&quot;</span>}</span></li>
+</ol>)
 
       
 
     </section>
     
+<section class="desc markdown">
+  <p>get current challenges</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;ChallengeResponse&gt; getChallenges() async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;ChallengeResponse&gt; getChallenges({
+  String season = &quot;current&quot;,
+}) async {
   final data = await _send(
     apiVersion: &quot;v2&quot;,
     endpoint: &quot;challenges&quot;,
-    query: [&quot;season=current&quot;],
+    query: [&quot;season=$season&quot;],
   );
 
   return ChallengeResponse(data);
@@ -110,7 +116,11 @@
 
     <li class="section-title"><a href="../../fortnite_api_io/FortniteApiIo-class.html#instance-methods">Methods</a></li>
     <li><a href="../../fortnite_api_io/FortniteApiIo/getChallenges.html">getChallenges</a></li>
+    <li><a href="../../fortnite_api_io/FortniteApiIo/getItemData.html">getItemData</a></li>
     <li><a href="../../fortnite_api_io/FortniteApiIo/getItems.html">getItems</a></li>
+    <li><a href="../../fortnite_api_io/FortniteApiIo/getItemSets.html">getItemSets</a></li>
+    <li><a href="../../fortnite_api_io/FortniteApiIo/getRarities.html">getRarities</a></li>
+    <li><a href="../../fortnite_api_io/FortniteApiIo/getShop.html">getShop</a></li>
     <li><a href="../../fortnite_api_io/FortniteApiIo/getUpcomingItems.html">getUpcomingItems</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.15.1/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.15.1/dart-core/Object/toString.html">toString</a></li>
@@ -133,7 +143,7 @@
 <footer>
   <span class="no-break">
     fortnite
-      1.0.6
+      1.0.7
   </span>
 
   

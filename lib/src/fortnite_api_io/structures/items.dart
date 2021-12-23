@@ -1,3 +1,4 @@
+/// fortnite items response
 class ItemsResponse {
   late bool result = false;
   List<Item> items = [];
@@ -11,6 +12,7 @@ class ItemsResponse {
   }
 }
 
+/// fortnite item
 class Item {
   late String mainId;
   late String id;

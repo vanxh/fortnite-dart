@@ -122,14 +122,27 @@ default is english. <a href="../fortnite_api_io/FortniteApiIo/language.html">[..
       <h2>Methods</h2>
       <dl class="callables">
         <dt id="getChallenges" class="callable">
-  <span class="name"><a href="../fortnite_api_io/FortniteApiIo/getChallenges.html">getChallenges</a></span><span class="signature">(<wbr>)
+  <span class="name"><a href="../fortnite_api_io/FortniteApiIo/getChallenges.html">getChallenges</a></span><span class="signature">(<wbr><span class="parameter" id="getChallenges-param-season">{<span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">season</span> = <span class="default-value">&quot;current&quot;</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../fortnite_api_io/ChallengeResponse-class.html">ChallengeResponse</a></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-   
+  get current challenges 
+  
+
+</dd>
+
+        <dt id="getItemData" class="callable">
+  <span class="name"><a href="../fortnite_api_io/FortniteApiIo/getItemData.html">getItemData</a></span><span class="signature">(<wbr><span class="parameter" id="getItemData-param-itemId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">itemId</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../fortnite_api_io/Item-class.html">Item</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  get a specific item data 
   
 
 </dd>
@@ -142,7 +155,46 @@ default is english. <a href="../fortnite_api_io/FortniteApiIo/language.html">[..
 
 </dt>
 <dd>
-   
+  get all items 
+  
+
+</dd>
+
+        <dt id="getItemSets" class="callable">
+  <span class="name"><a href="../fortnite_api_io/FortniteApiIo/getItemSets.html">getItemSets</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../fortnite_api_io/ItemSetsResponse-class.html">ItemSetsResponse</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  get all item sets 
+  
+
+</dd>
+
+        <dt id="getRarities" class="callable">
+  <span class="name"><a href="../fortnite_api_io/FortniteApiIo/getRarities.html">getRarities</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../fortnite_api_io/RaritiesResponse-class.html">RaritiesResponse</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  get all rarities 
+  
+
+</dd>
+
+        <dt id="getShop" class="callable">
+  <span class="name"><a href="../fortnite_api_io/FortniteApiIo/getShop.html">getShop</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../fortnite_api_io/ShopResponse-class.html">ShopResponse</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  get current shop 
   
 
 </dd>
@@ -155,7 +207,7 @@ default is english. <a href="../fortnite_api_io/FortniteApiIo/language.html">[..
 
 </dt>
 <dd>
-   
+  get all upcoming items 
   
 
 </dd>
@@ -234,8 +286,13 @@ default is english. <a href="../fortnite_api_io/FortniteApiIo/language.html">[..
   <li><a href="../fortnite_api_io/ChallengeResponse-class.html">ChallengeResponse</a></li>
   <li><a href="../fortnite_api_io/FortniteApiIo-class.html">FortniteApiIo</a></li>
   <li><a href="../fortnite_api_io/Item-class.html">Item</a></li>
+  <li><a href="../fortnite_api_io/ItemSet-class.html">ItemSet</a></li>
+  <li><a href="../fortnite_api_io/ItemSetsResponse-class.html">ItemSetsResponse</a></li>
   <li><a href="../fortnite_api_io/ItemsResponse-class.html">ItemsResponse</a></li>
   <li><a href="../fortnite_api_io/Quest-class.html">Quest</a></li>
+  <li><a href="../fortnite_api_io/RaritiesResponse-class.html">RaritiesResponse</a></li>
+  <li><a href="../fortnite_api_io/Rarity-class.html">Rarity</a></li>
+  <li><a href="../fortnite_api_io/ShopResponse-class.html">ShopResponse</a></li>
 
 
 
@@ -265,7 +322,11 @@ default is english. <a href="../fortnite_api_io/FortniteApiIo/language.html">[..
 
     <li class="section-title"><a href="../fortnite_api_io/FortniteApiIo-class.html#instance-methods">Methods</a></li>
     <li><a href="../fortnite_api_io/FortniteApiIo/getChallenges.html">getChallenges</a></li>
+    <li><a href="../fortnite_api_io/FortniteApiIo/getItemData.html">getItemData</a></li>
     <li><a href="../fortnite_api_io/FortniteApiIo/getItems.html">getItems</a></li>
+    <li><a href="../fortnite_api_io/FortniteApiIo/getItemSets.html">getItemSets</a></li>
+    <li><a href="../fortnite_api_io/FortniteApiIo/getRarities.html">getRarities</a></li>
+    <li><a href="../fortnite_api_io/FortniteApiIo/getShop.html">getShop</a></li>
     <li><a href="../fortnite_api_io/FortniteApiIo/getUpcomingItems.html">getUpcomingItems</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.15.1/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.15.1/dart-core/Object/toString.html">toString</a></li>
@@ -285,7 +346,7 @@ default is english. <a href="../fortnite_api_io/FortniteApiIo/language.html">[..
 <footer>
   <span class="no-break">
     fortnite
-      1.0.6
+      1.0.7
   </span>
 
   

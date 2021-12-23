@@ -1,3 +1,4 @@
+/// item shop response
 class ShopResponse {
   late bool result = false;
   late bool fullShop = false;

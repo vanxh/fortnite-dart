@@ -91,16 +91,20 @@ class FortniteApiIo {
     }
   }
 
-  Future<ChallengeResponse> getChallenges() async {
+  /// get current challenges
+  Future<ChallengeResponse> getChallenges({
+    String season = "current",
+  }) async {
     final data = await _send(
       apiVersion: "v2",
       endpoint: "challenges",
-      query: ["season=current"],
+      query: ["season=$season"],
     );
 
     return ChallengeResponse(data);
   }
 
+  /// get all items
   Future<ItemsResponse> getItems() async {
     final data = await _send(
       apiVersion: "v2",
@@ -111,6 +115,7 @@ class FortniteApiIo {
     return ItemsResponse(data);
   }
 
+  /// get all upcoming items
   Future<ItemsResponse> getUpcomingItems() async {
     final data = await _send(
       apiVersion: "v2",
@@ -121,6 +126,7 @@ class FortniteApiIo {
     return ItemsResponse(data);
   }
 
+  /// get a specific item data
   Future<Item> getItemData(String itemId) async {
     final data = await _send(
       apiVersion: "v2",
@@ -131,6 +137,7 @@ class FortniteApiIo {
     return Item(data["item"]);
   }
 
+  /// get all item sets
   Future<ItemSetsResponse> getItemSets() async {
     final data = await _send(
       apiVersion: "v2",
@@ -141,6 +148,7 @@ class FortniteApiIo {
     return ItemSetsResponse(data);
   }
 
+  /// get all rarities
   Future<RaritiesResponse> getRarities() async {
     final data = await _send(
       apiVersion: "v2",
@@ -151,6 +159,7 @@ class FortniteApiIo {
     return RaritiesResponse(data);
   }
 
+  /// get current shop
   Future<ShopResponse> getShop() async {
     final data = await _send(
       apiVersion: "v2",

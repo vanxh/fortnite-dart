@@ -1,3 +1,4 @@
+/// http library response object
 class HttpResponse {
   late bool success;
   late dynamic data;

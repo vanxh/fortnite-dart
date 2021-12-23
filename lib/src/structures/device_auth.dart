@@ -1,3 +1,4 @@
+/// device auth object
 class DeviceAuth {
   /// The account ID for the device auth
   late String accountId;

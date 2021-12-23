@@ -1,3 +1,4 @@
+/// fortnite rarities response
 class RaritiesResponse {
   late bool result = false;
   late String lang = "en";
@@ -33,6 +34,7 @@ class RaritiesResponse {
   }
 }
 
+/// fortnite rarity
 class Rarity {
   late String id;
   late String name;

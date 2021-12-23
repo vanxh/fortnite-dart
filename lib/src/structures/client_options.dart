@@ -1,6 +1,7 @@
 import "package:logging/logging.dart";
 import "device_auth.dart";
 
+/// options for the main client
 class ClientOptions {
   /// should log
   late bool log;

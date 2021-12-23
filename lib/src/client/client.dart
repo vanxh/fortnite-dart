@@ -5,6 +5,7 @@ import "package:fortnite/src/structures/http_response.dart";
 import "package:fortnite/resources/auth_clients.dart";
 import "auth.dart";
 
+/// client object log levels
 enum LogLevel {
   debug,
   info,

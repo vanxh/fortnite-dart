@@ -1,3 +1,4 @@
+/// fortnite challenges response
 class ChallengeResponse {
   late bool result = false;
   late int season = 0;
@@ -30,6 +31,7 @@ class ChallengeResponse {
   }
 }
 
+/// fortnite challenge bundle
 class ChallengeBundle {
   late String id;
   late String name;
@@ -71,6 +73,7 @@ class ChallengeBundle {
   }
 }
 
+/// fortnite quest
 class Quest {
   late String id;
   late String name;
