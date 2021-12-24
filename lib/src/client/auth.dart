@@ -17,7 +17,7 @@ class FortniteAuth {
     required String grantType,
     required String grantData,
     String tokenType = "eg1",
-    String authClient = "fortniteIOSGameClient",
+    required String authClient,
   }) async {
     HttpResponse res = await _client.http.post(
       url: Endpoints().oauthTokenCreate,
