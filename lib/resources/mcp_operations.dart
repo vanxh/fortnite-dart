@@ -3,7 +3,9 @@
 import "endpoints.dart";
 import "fortnite_profile_ids.dart";
 
+/// MCP operations object
 class MCP {
+  /// base url for mcp requests
   final String _baseURL = Endpoints().mcp;
 
   /// account id to be used for mcp operations
@@ -11,6 +13,8 @@ class MCP {
 
   /// profile id to be used for mcp operations
   final FortniteProfile _profileId;
+
+  /// profile id as string
   late String profileId;
 
   /// Get mcp request url

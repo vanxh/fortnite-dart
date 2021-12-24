@@ -14,12 +14,14 @@ enum LogLevel {
   wtf,
 }
 
+/// invalid bearer token errors
 List<String> invalidTokenErrorCodes = [
   "errors.com.epicgames.common.authentication.token_verification_failed",
   "errors.com.epicgames.common.oauth.invalid_token",
   "errors.com.epicgames.common.authentication.authentication_failed",
 ];
 
+/// client object
 class Client {
   /// options for the client
   late final ClientOptions _clientOptions;
@@ -63,12 +65,19 @@ class Client {
     log(LogLevel.info, "Initialized fortnite client object");
   }
 
+  /// returns display name of client
   String get displayName => _clientOptions.deviceAuth.displayName;
+
+  /// returns account id of client
   String get accountId => _clientOptions.deviceAuth.accountId;
+
+  /// returns device id of client
   String get deviceId => _clientOptions.deviceAuth.deviceId;
+
+  /// returns device auth secret of client
   String get secret => _clientOptions.deviceAuth.secret;
 
-  /// log
+  /// log function
   void log(LogLevel l, String message) {
     if (_clientOptions.log == false) return;
 

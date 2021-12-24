@@ -1,5 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
+/// Fortnite profile id enum
 enum FortniteProfile {
   campaign,
   athena,

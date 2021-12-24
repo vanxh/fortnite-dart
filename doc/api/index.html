@@ -58,6 +58,7 @@
 </code></pre>
 <p>or use your prefferd text editor or IDE to install the plugin.</p>
 <h2 id="usage-example">Usage Example</h2>
+<p>Main Fortnite Package Usage:</p>
 <pre class="language-dart"><code class="language-dart">import "package:fortnite/fortnite.dart";
 import "package:logging/logging.dart";
 
@@ -86,6 +87,18 @@ void main() async {
   print(client.accountId); // print the account id of the client
 
   // rest of your code
+}
+</code></pre>
+<p><a href="https://fortniteapi.io">FortniteApi.io</a> Package Usage:</p>
+<pre class="language-dart"><code class="language-dart">import "package:fortnite/fortnite_api_io.dart";
+
+void main() async {
+  final FortniteApiIo fn = FortniteApiIo(
+    apiKey: "YOUR API KEY",
+  );
+
+  ChallengeResponse c = await fn.getChallenges();
+  print("There are ${c.bundles.length} challenge bundles available.");
 }
 </code></pre>
 <h2 id="links">Links</h2>

@@ -1,5 +1,6 @@
 import "epic_services.dart";
 
+/// An object containing epic endpoints used by the library
 class Endpoints {
   String get _oAuth => "${EpicServices().accountService}/account/api/oauth";
 
