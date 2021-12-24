@@ -53,3 +53,5 @@
 -   Kill multiple sessions method to auth library.
 -   Get external auths connections method to auth library.
 -   Unlink external auth method to auth library.
+
+## 1.0.9
