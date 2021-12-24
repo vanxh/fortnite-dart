@@ -127,4 +127,15 @@ class FortniteAuth {
 
     return auths;
   }
+
+  /// unlink an external auth from account
+  Future<dynamic> unlinkExternalAuth({
+    required String platform,
+  }) async {
+    return await _client.send(
+      method: "DELETE",
+      url:
+          "${Endpoints().accountId}/${_client.accountId}/externalAuths/$platform",
+    );
+  }
 }
