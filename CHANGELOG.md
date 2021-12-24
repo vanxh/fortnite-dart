@@ -48,3 +48,4 @@
 ## 1.0.8
 
 -   Create device auth method to auth library.
+-   Create exchange code method to auth library.

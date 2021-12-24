@@ -42,6 +42,7 @@ class FortniteAuth {
   }
 
   /// creates a [DeviceAuth] object.
+  /// a device auth is valid until its forcefully deleted or account password is changed.
   Future<DeviceAuth> createDeviceAuth() async {
     HttpResponse res = await _client.send(
       method: "POST",
@@ -54,5 +55,17 @@ class FortniteAuth {
       secret: res.data["secret"],
       displayName: _client.displayName,
     );
+  }
+
+  /// creates an exchange code to authenticate with the fortnite api.
+  /// an exchange code is valid only for 30 seconds.
+  /// an exchange code can be used to launch game/ perform any action on account.
+  Future<String> createExchangeCode() async {
+    HttpResponse res = await _client.send(
+      method: "GET",
+      url: Endpoints().oauthExchange,
+    );
+
+    return res.data["code"];
   }
 }
