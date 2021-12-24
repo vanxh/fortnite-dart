@@ -46,3 +46,5 @@
 -   Get shop method to FortniteApiIo class.
 
 ## 1.0.8
+
+-   Create device auth method to auth library.

@@ -1,6 +1,7 @@
 import "client.dart";
-import "package:fortnite/src/structures/http_response.dart";
-import "package:fortnite/resources/endpoints.dart";
+import "../structures/device_auth.dart";
+import "../structures/http_response.dart";
+import "../../resources/endpoints.dart";
 
 /// fortnite auth library
 class FortniteAuth {
@@ -38,5 +39,20 @@ class FortniteAuth {
       }
       throw Exception(res.error?["errorMessage"] ?? "Unknown error");
     }
+  }
+
+  /// creates a [DeviceAuth] object.
+  Future<DeviceAuth> createDeviceAuth() async {
+    HttpResponse res = await _client.send(
+      method: "POST",
+      url: "${Endpoints().oauthDeviceAuth}/${_client.accountId}/deviceAuth",
+    );
+
+    return DeviceAuth(
+      accountId: _client.accountId,
+      deviceId: res.data["deviceId"],
+      secret: res.data["secret"],
+      displayName: _client.displayName,
+    );
   }
 }
