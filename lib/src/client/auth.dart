@@ -81,4 +81,23 @@ class FortniteAuth {
       authClient: authClient,
     );
   }
+
+  /// kills an access token.
+  /// it kills all sessions created with that access token.
+  Future<dynamic> killAccessToken({
+    required String token,
+  }) async {
+    return await _client.send(
+      method: "DELETE",
+      url: "${Endpoints().oauthTokenDelete}/$token",
+    );
+  }
+
+  /// kills multiple auth token sessions at once.
+  Future<dynamic> killSessions(String killType) async {
+    return await _client.send(
+      method: "DELETE",
+      url: "${Endpoints().oauthTokenDeleteMultiple}?killType=$killType",
+    );
+  }
 }
