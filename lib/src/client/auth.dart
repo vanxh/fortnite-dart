@@ -2,6 +2,7 @@ import "client.dart";
 import "../structures/device_auth.dart";
 import "../structures/http_response.dart";
 import "../../resources/endpoints.dart";
+import "../../resources/auth_clients.dart";
 
 /// fortnite auth library
 class FortniteAuth {
@@ -67,5 +68,17 @@ class FortniteAuth {
     );
 
     return res.data["code"];
+  }
+
+  /// creates any client token by exchange code.
+  /// get a client from [AuthClients] and pass that to [authClient] parameter.
+  Future<String> createClientAccessToken({
+    required String authClient,
+  }) async {
+    return await createOAuthToken(
+      grantType: "exchange_code",
+      grantData: "exchange_code=${createExchangeCode()}",
+      authClient: authClient,
+    );
   }
 }
