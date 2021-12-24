@@ -51,3 +51,4 @@
 -   Create exchange code method to auth library.
 -   Create specific fortnite auth client access token method to auth library.
 -   Kill multiple sessions method to auth library.
+-   Get external auths connections method to auth library.

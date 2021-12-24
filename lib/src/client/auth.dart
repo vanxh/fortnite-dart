@@ -1,6 +1,7 @@
 import "client.dart";
 import "../structures/device_auth.dart";
 import "../structures/http_response.dart";
+import "../structures/external_auth.dart";
 import "../../resources/endpoints.dart";
 import "../../resources/auth_clients.dart";
 
@@ -99,5 +100,31 @@ class FortniteAuth {
       method: "DELETE",
       url: "${Endpoints().oauthTokenDeleteMultiple}?killType=$killType",
     );
+  }
+
+  /// returns external auth connections for the account
+  Future<List<ExternalAuth>> getExternalAuths() async {
+    List<ExternalAuth> auths = [];
+
+    HttpResponse res = await _client.send(
+      method: "GET",
+      url: "${Endpoints().accountId}/${_client.accountId}/externalAuths",
+    );
+
+    for (dynamic auth in res.data) {
+      auths.add(
+        ExternalAuth(
+          accountId: auth["accountId"] ?? "",
+          externalAuthId: auth["externalAuthId"] ?? "",
+          dateAdded: auth["dateAdded"] ?? "",
+          externalAuthIdType: auth["externalAuthIdType"] ?? "",
+          externalDisplayName: auth["externalDisplayName"] ?? "",
+          regionInfo: auth["regionInfo"] ?? "",
+          type: auth["type"] ?? "",
+        ),
+      );
+    }
+
+    return auths;
   }
 }
