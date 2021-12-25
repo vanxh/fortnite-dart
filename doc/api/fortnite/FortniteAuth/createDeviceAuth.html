@@ -69,15 +69,15 @@ a device auth is valid until its forcefully deleted or account password is chang
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;DeviceAuth&gt; createDeviceAuth() async {
-  HttpResponse res = await _client.send(
+  dynamic res = await _client.send(
     method: &quot;POST&quot;,
     url: &quot;${Endpoints().oauthDeviceAuth}&#47;${_client.accountId}&#47;deviceAuth&quot;,
   );
 
   return DeviceAuth(
     accountId: _client.accountId,
-    deviceId: res.data[&quot;deviceId&quot;],
-    secret: res.data[&quot;secret&quot;],
+    deviceId: res[&quot;deviceId&quot;],
+    secret: res[&quot;secret&quot;],
     displayName: _client.displayName,
   );
 }</code></pre>

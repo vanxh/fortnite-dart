@@ -7,3 +7,6 @@ build/
 
 # test
 test/
+
+# device auth
+device_auth.json

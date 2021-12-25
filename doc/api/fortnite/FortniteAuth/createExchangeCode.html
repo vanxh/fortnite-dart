@@ -70,12 +70,12 @@ an exchange code can be used to launch game/ perform any action on account.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;String&gt; createExchangeCode() async {
-  HttpResponse res = await _client.send(
+  dynamic res = await _client.send(
     method: &quot;GET&quot;,
     url: Endpoints().oauthExchange,
   );
 
-  return res.data[&quot;code&quot;];
+  return res[&quot;code&quot;];
 }</code></pre>
 </section>
 

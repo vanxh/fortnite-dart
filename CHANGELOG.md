@@ -60,3 +60,6 @@
 -   MCP profile manager.
 -   Common core profile manager.
 -   VBucks method to common core profile manager.
+-   Purchased vbucks getter to common core profile manager.
+-   Get account receipts method to common core profile manager.
+-   Get supported creator method to common core profile manager.

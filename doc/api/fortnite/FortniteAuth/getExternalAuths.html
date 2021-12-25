@@ -52,7 +52,7 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.15.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">ExternalAuth</span>&gt;</span></span>&gt;</span></span>
+<span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.15.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../fortnite/ExternalAuth-class.html">ExternalAuth</a></span>&gt;</span></span>&gt;</span></span>
 <span class="name ">getExternalAuths</span>(<wbr>)
 
       
@@ -70,12 +70,12 @@
   <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;ExternalAuth&gt;&gt; getExternalAuths() async {
   List&lt;ExternalAuth&gt; auths = [];
 
-  HttpResponse res = await _client.send(
+  dynamic res = await _client.send(
     method: &quot;GET&quot;,
     url: &quot;${Endpoints().accountId}&#47;${_client.accountId}&#47;externalAuths&quot;,
   );
 
-  for (dynamic auth in res.data) {
+  for (dynamic auth in res) {
     auths.add(
       ExternalAuth(
         accountId: auth[&quot;accountId&quot;] ?? &quot;&quot;,

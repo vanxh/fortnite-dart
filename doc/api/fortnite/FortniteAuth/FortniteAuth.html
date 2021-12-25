@@ -61,7 +61,8 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">FortniteAuth(this._client) {
-  _client.log(LogLevel.info, &quot;Fortnite auth module initialized&quot;);
+  _client.log(LogLevel.info,
+      &quot;Fortnite auth module initialized [${_client.accountId}]&quot;);
 }</code></pre>
 </section>
 
