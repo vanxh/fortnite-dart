@@ -62,12 +62,13 @@ class Client {
 
     /// initialize auth object
     auth = FortniteAuth(this);
+    commonCore = CommonCoreProfile(this);
 
     if (overrideSession != "") {
       session = overrideSession;
     }
 
-    log(LogLevel.info, "Initialized fortnite client object");
+    log(LogLevel.info, "Initialized fortnite client object [$accountId]");
   }
 
   /// returns display name of client

@@ -11,7 +11,8 @@ class FortniteAuth {
   late final Client _client;
 
   FortniteAuth(this._client) {
-    _client.log(LogLevel.info, "Fortnite auth module initialized");
+    _client.log(LogLevel.info,
+        "Fortnite auth module initialized [${_client.accountId}]");
   }
 
   /// Authenticate with the Fortnite API

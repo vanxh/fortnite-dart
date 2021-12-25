@@ -59,3 +59,4 @@
 -   More documentation on structures of FortniteApiIo class.
 -   MCP profile manager.
 -   Common core profile manager.
+-   VBucks method to common core profile manager.

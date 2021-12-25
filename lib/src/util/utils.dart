@@ -76,3 +76,17 @@ Future<DeviceAuth> authenticateWithAuthorizationCode(
     throw e.response?.data["errorMessage"] ?? "Unknown Error";
   }
 }
+
+/// Vbucks type
+Map<String, String> vbucksType = {
+  "MtxComplimentary": "STW/Refunds",
+  "MtxGiveaway": "Challenges/Battle Pass",
+  "MtxPurchased": "Purchased",
+  "MtxPurchaseBonus": "Purchase Bonus",
+};
+
+/// Vbucks platform
+Map<String, String> vbucksPlatform = {
+  "Live": "Xbox",
+  "PSN": "Playstation",
+};

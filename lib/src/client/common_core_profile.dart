@@ -1,16 +1,82 @@
 import "client.dart";
 import "mcp_profile.dart";
+import "../structures/profile_item.dart";
+import "../../resources/fortnite_profile_ids.dart";
+import "../../resources/mcp_operations.dart";
 
 /// common core profile manager library
 class CommonCoreProfile extends McpProfile {
   /// common core profile object
-  CommonCoreProfile(Client client) : super(client);
+  CommonCoreProfile(Client client)
+      : super(
+          client,
+          FortniteProfile.common_core,
+        );
 
   /// init the profile
   Future<dynamic> init() async {
-    if (initialized == false) return;
+    if (initialized == true) return;
+
+    var res = await client.send(
+      method: "POST",
+      url: MCP(
+        FortniteProfile.common_core,
+        accountId: client.accountId,
+      ).QueryProfile,
+      body: {},
+    );
+
+    created = DateTime.parse(res["profileChanges"][0]["profile"]["created"]);
+    updated = DateTime.parse(res["profileChanges"][0]["profile"]["updated"]);
+    serverTime = DateTime.parse(res["serverTime"]);
+    rvn = res["profileChanges"][0]["profile"]["rvn"];
+
+    Map<String, dynamic> _items = res["profileChanges"][0]["profile"]["items"];
+
+    for (var item in _items.entries) {
+      if (item.value["templateId"].toString().startsWith("Currency:Mtx")) {
+        items.add(
+          MtxItem(
+            client,
+            id: item.key,
+            profileId: profileId,
+            templateId: item.value["templateId"],
+            attributes: item.value["attributes"],
+            quantity: item.value["quantity"],
+          ),
+        );
+      } else {
+        items.add(
+          ProfileItem(
+            client,
+            id: item.key,
+            profileId: profileId,
+            templateId: item.value["templateId"],
+            attributes: item.value["attributes"],
+            quantity: item.value["quantity"],
+          ),
+        );
+      }
+    }
 
     initialized = true;
-    client.log(LogLevel.info, "Common core profile module initialized");
+    client.log(LogLevel.info,
+        "Common core profile module initialized [${client.accountId}]");
+  }
+
+  /// get vbucks breakdown of profile
+  List<MtxItem> get vbucksBreakdown {
+    confirmInitialized();
+    return items.whereType<MtxItem>().toList();
+  }
+
+  /// get total vbucks of profile
+  int get totalVbucks {
+    confirmInitialized();
+    return items
+        .whereType<MtxItem>()
+        .toList()
+        .map((e) => e.quantity)
+        .reduce((a, b) => a + b);
   }
 }
