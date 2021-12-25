@@ -1,9 +1,9 @@
 import "package:logging/logging.dart";
-import "package:fortnite/src/client/http.dart";
-import "package:fortnite/src/structures/client_options.dart";
-import "package:fortnite/src/structures/http_response.dart";
-import "package:fortnite/resources/auth_clients.dart";
+import "http.dart";
 import "auth.dart";
+import "../structures/client_options.dart";
+import "../structures/http_response.dart";
+import "../../resources/auth_clients.dart";
 
 /// client object log levels
 enum LogLevel {

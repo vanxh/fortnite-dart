@@ -1,7 +1,7 @@
 import "package:dio/dio.dart";
 import "../structures/device_auth.dart";
-import "package:fortnite/resources/endpoints.dart";
-import "package:fortnite/resources/auth_clients.dart";
+import "../../resources/endpoints.dart";
+import "../../resources/auth_clients.dart";
 
 /// parses an authorization code
 dynamic parseAuthorizationCode(String authCode) {

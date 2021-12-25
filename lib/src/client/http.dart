@@ -1,6 +1,6 @@
 import "package:dio/dio.dart";
 import "client.dart";
-import "package:fortnite/src/structures/http_response.dart";
+import "../structures/http_response.dart";
 
 /// custom HTTP class
 class HTTP {

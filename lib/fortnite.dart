@@ -6,7 +6,9 @@ export "resources/auth_clients.dart";
 
 export "src/structures/client_options.dart";
 export "src/structures/device_auth.dart";
+export "src/structures/external_auth.dart";
 export "src/structures/http_response.dart";
+export "src/structures/profile_item.dart";
 
 export "src/util/utils.dart";
 
