@@ -30,8 +30,8 @@ class CommonCoreProfile extends McpProfile {
     updated = DateTime.parse(res["profileChanges"][0]["profile"]["updated"]);
     serverTime = DateTime.parse(res["serverTime"]);
     rvn = res["profileChanges"][0]["profile"]["rvn"];
-
     Map<String, dynamic> _items = res["profileChanges"][0]["profile"]["items"];
+    stats = res["profileChanges"][0]["profile"]["stats"]["attributes"];
 
     for (var item in _items.entries) {
       if (item.value["templateId"].toString().startsWith("Currency:Mtx")) {
@@ -73,10 +73,28 @@ class CommonCoreProfile extends McpProfile {
   /// get total vbucks of profile
   int get totalVbucks {
     confirmInitialized();
-    return items
-        .whereType<MtxItem>()
-        .toList()
-        .map((e) => e.quantity)
-        .reduce((a, b) => a + b);
+    return vbucksBreakdown.map((e) => e.quantity).reduce((a, b) => a + b);
+  }
+
+  /// get total vbucks purchased till now of profile
+  int get totalVbucksPurchased {
+    confirmInitialized();
+
+    if (stats["in_app_purchases"]?["fulfillmentCounts"] == null) {
+      return 0;
+    }
+
+    List<num> _purchases =
+        (stats["in_app_purchases"]["fulfillmentCounts"] as Map<String, dynamic>)
+            .entries
+            .where((element) => element.key.startsWith("FN_"))
+            .map((e) => int.parse(e.key.split("_")[1]) * e.value)
+            .toList();
+
+    if (_purchases.isEmpty) {
+      return 0;
+    }
+
+    return _purchases.reduce((a, b) => a + b).toInt();
   }
 }

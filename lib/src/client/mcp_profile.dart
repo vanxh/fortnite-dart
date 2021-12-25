@@ -31,6 +31,9 @@ abstract class McpProfile {
   /// profile items
   List<ProfileItem> items = [];
 
+  /// profile stats
+  late Map<String, dynamic> stats;
+
   /// mcp profile object
   McpProfile(this.client, this.profileId) {
     accountId = client.accountId;
