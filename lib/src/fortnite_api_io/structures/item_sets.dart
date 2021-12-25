@@ -1,7 +1,12 @@
 /// item sets response
 class ItemSetsResponse {
+  /// result success of response
   late bool result = false;
+
+  /// language of response
   late String lang = "en";
+
+  /// item sets
   List<ItemSet> sets = [];
 
   ItemSetsResponse(dynamic res) {
@@ -21,7 +26,10 @@ class ItemSetsResponse {
 
 /// fortnite item set
 class ItemSet {
+  /// item set id
   late String id;
+
+  /// item set name
   late String name;
 
   ItemSet({

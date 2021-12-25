@@ -55,3 +55,5 @@
 -   Unlink external auth method to auth library.
 
 ## 1.0.9
+
+-   More documentation on structures of FortniteApiIo class.

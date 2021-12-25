@@ -1,7 +1,12 @@
 /// fortnite rarities response
 class RaritiesResponse {
+  /// result success of response
   late bool result = false;
+
+  /// response language
   late String lang = "en";
+
+  /// list of rarities
   List<Rarity> rarities = [];
 
   RaritiesResponse(dynamic res) {
@@ -36,10 +41,19 @@ class RaritiesResponse {
 
 /// fortnite rarity
 class Rarity {
+  /// id of the rarity
   late String id;
+
+  /// name of the rarity
   late String name;
+
+  /// translation id of the rarity
   late dynamic translationID;
+
+  /// colors object of the rarity
   late Map colors;
+
+  /// image of the rarity
   late dynamic image;
 
   Rarity({

@@ -1,6 +1,9 @@
 /// fortnite items response
 class ItemsResponse {
+  /// result success of response
   late bool result = false;
+
+  /// list of items
   List<Item> items = [];
 
   ItemsResponse(dynamic res) {
@@ -14,34 +17,88 @@ class ItemsResponse {
 
 /// fortnite item
 class Item {
-  late String mainId;
+  /// item id
   late String id;
+
+  /// item type
   late dynamic type;
+
+  /// item name
   late String name;
+
+  /// item description
   late String description;
+
+  /// item rarity
   late dynamic rarity;
+
+  /// item series
   late dynamic series;
+
+  /// item price
   late int price;
+
+  /// data on when item was added
   late dynamic added;
+
+  /// built in emote data for the item
   late dynamic builtInEmote;
+
+  /// does the item has a copyrighted audio
   late bool copyrightedAudio;
+
+  /// is the item gonna be released in future
   late bool upcoming;
+
+  /// is the item reactive
   late bool reactive;
+
+  /// release date for item
   late dynamic releaseDate;
+
+  /// last apperance for item
   late dynamic lastAppearance;
+
+  /// interest for item
   late double interest;
+
+  /// icon url for item
   late dynamic icon;
+
+  /// featured icon url for item
   late dynamic featured;
+
+  /// background icon for item
   late dynamic bg;
+
+  /// full background icon for item
   late dynamic fullBg;
+
+  /// video hash for item. https://youtube.com/watch?v=<hash>
   late dynamic video;
+
+  /// audio data for item
   late dynamic audio;
+
+  /// gameplay tags of item
   late List<dynamic> gameplayTags;
+
+  /// api tags of item
   late List<dynamic> apiTags;
+
+  /// battle pass data for item if any
   late dynamic battlepass;
+
+  /// item set data for item
   late dynamic itemSet;
+
+  /// shop history for item
   late List<dynamic> shopHistory;
+
+  /// display assets render data for item
   late dynamic displayAssets;
+
+  /// styles data for item
   late dynamic styles;
 
   Item(dynamic item) {
