@@ -67,12 +67,14 @@ class CommonCoreProfile extends McpProfile {
   /// get vbucks breakdown of profile
   List<MtxItem> get vbucksBreakdown {
     confirmInitialized();
+
     return items.whereType<MtxItem>().toList();
   }
 
   /// get total vbucks of profile
   int get totalVbucks {
     confirmInitialized();
+
     return vbucksBreakdown.map((e) => e.quantity).reduce((a, b) => a + b);
   }
 
@@ -96,5 +98,29 @@ class CommonCoreProfile extends McpProfile {
     }
 
     return _purchases.reduce((a, b) => a + b).toInt();
+  }
+
+  /// get epic purchase receipts for the profile
+  List<String> get receipts {
+    confirmInitialized();
+
+    if (stats["in_app_purchases"]?["receipts"] == null) {
+      return [];
+    }
+
+    return (stats["in_app_purchases"]["receipts"] as List<dynamic>)
+        .cast<String>();
+  }
+
+  /// get currently supported creator by the profile.
+  /// it is an empty string if no creator is supported by the profile.
+  String get supportedCreator {
+    confirmInitialized();
+
+    if (stats["mtx_affiliate"] == null) {
+      return "";
+    }
+
+    return stats["mtx_affiliate"];
   }
 }
