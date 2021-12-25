@@ -45,12 +45,15 @@ void main() async {
     );
 
     /// print the url to the console
-    print(authorizationCodeURL);
+    print("Get an authorization code from here: $authorizationCodeURL");
+
+    stdout.write("Enter an authorization code: ");
+    String authorizationCode = stdin.readLineSync() ?? "";
 
     /// get an authorization code from previous url and use it to create a device auth.
     /// a device auth dont gets invalid until you forcefully delete it or change your password.
     deviceAuth = await authenticateWithAuthorizationCode(
-      "f6e913e9bdb842b4b184370beac6cf2a", // authorization code
+      authorizationCode, // authorization code
     );
 
     /// write the device auth to a file

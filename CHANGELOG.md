@@ -63,3 +63,7 @@
 -   Purchased vbucks getter to common core profile manager.
 -   Get account receipts method to common core profile manager.
 -   Get supported creator method to common core profile manager.
+
+## 1.1.0
+
+-   Updated example.
