@@ -15,3 +15,5 @@ export "src/util/utils.dart";
 export "src/client/client.dart";
 export "src/client/http.dart";
 export "src/client/auth.dart";
+export "src/client/mcp_profile.dart";
+export "src/client/common_core_profile.dart";
