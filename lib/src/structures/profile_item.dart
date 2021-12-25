@@ -4,7 +4,7 @@ import "../../resources/fortnite_profile_ids.dart";
 /// Fortnite profile item object
 class ProfileItem {
   /// main client
-  late final Client client;
+  late Client client;
 
   /// profile id of the item
   late FortniteProfile profileId;

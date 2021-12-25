@@ -46,15 +46,15 @@ class FortniteAuth {
   /// creates a [DeviceAuth] object.
   /// a device auth is valid until its forcefully deleted or account password is changed.
   Future<DeviceAuth> createDeviceAuth() async {
-    HttpResponse res = await _client.send(
+    dynamic res = await _client.send(
       method: "POST",
       url: "${Endpoints().oauthDeviceAuth}/${_client.accountId}/deviceAuth",
     );
 
     return DeviceAuth(
       accountId: _client.accountId,
-      deviceId: res.data["deviceId"],
-      secret: res.data["secret"],
+      deviceId: res["deviceId"],
+      secret: res["secret"],
       displayName: _client.displayName,
     );
   }
@@ -63,12 +63,12 @@ class FortniteAuth {
   /// an exchange code is valid only for 30 seconds.
   /// an exchange code can be used to launch game/ perform any action on account.
   Future<String> createExchangeCode() async {
-    HttpResponse res = await _client.send(
+    dynamic res = await _client.send(
       method: "GET",
       url: Endpoints().oauthExchange,
     );
 
-    return res.data["code"];
+    return res["code"];
   }
 
   /// creates any client token by exchange code.
@@ -106,12 +106,12 @@ class FortniteAuth {
   Future<List<ExternalAuth>> getExternalAuths() async {
     List<ExternalAuth> auths = [];
 
-    HttpResponse res = await _client.send(
+    dynamic res = await _client.send(
       method: "GET",
       url: "${Endpoints().accountId}/${_client.accountId}/externalAuths",
     );
 
-    for (dynamic auth in res.data) {
+    for (dynamic auth in res) {
       auths.add(
         ExternalAuth(
           accountId: auth["accountId"] ?? "",
