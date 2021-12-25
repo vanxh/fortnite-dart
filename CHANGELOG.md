@@ -57,3 +57,5 @@
 ## 1.0.9
 
 -   More documentation on structures of FortniteApiIo class.
+-   MCP profile manager.
+-   Common core profile manager.

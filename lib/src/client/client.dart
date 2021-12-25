@@ -1,6 +1,7 @@
 import "package:logging/logging.dart";
 import "http.dart";
 import "auth.dart";
+import "common_core_profile.dart";
 import "../structures/client_options.dart";
 import "../structures/http_response.dart";
 import "../../resources/auth_clients.dart";
@@ -32,7 +33,11 @@ class Client {
   /// http client for client
   late final HTTP http;
 
+  /// auth client for client
   late FortniteAuth auth;
+
+  /// common core profile for client
+  late CommonCoreProfile commonCore;
 
   /// session for the account
   String session = "";
