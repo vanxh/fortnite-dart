@@ -68,3 +68,8 @@
 
 -   Updated example.
 -   Get vbucks purchase breakdown method to common core profile manager.
+-   Added campaign profile manager.
+-   Account resource object.
+-   STW Hero object.
+-   STW Schematic object.
+-   Getters for heroes , schematics , traps, weapons , different types of heroes in campaign profile.

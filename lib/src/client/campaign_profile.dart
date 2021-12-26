@@ -1,6 +1,12 @@
 import "client.dart";
 import "mcp_profile.dart";
+
 import "../structures/profile_item.dart";
+import "../structures/stw_resource.dart";
+import "../structures/stw_hero.dart";
+import "../structures/stw_worker.dart";
+import "../structures/stw_schematic.dart";
+
 import "../../resources/fortnite_profile_ids.dart";
 import "../../resources/mcp_operations.dart";
 
@@ -56,8 +62,31 @@ class CampaignProfile extends McpProfile {
             quantity: item.value["quantity"],
           ),
         );
+      } else if (item.value["templateId"].toString().startsWith("Worker:")) {
+        print(item.value);
+        items.add(
+          STWWorker(
+            client,
+            id: item.key,
+            profileId: profileId,
+            templateId: item.value["templateId"],
+            attributes: item.value["attributes"],
+            quantity: item.value["quantity"],
+          ),
+        );
+      } else if (item.value["templateId"].toString().startsWith("Schematic:")) {
+        items.add(
+          STWSchematic(
+            client,
+            id: item.key,
+            profileId: profileId,
+            templateId: item.value["templateId"],
+            attributes: item.value["attributes"],
+            quantity: item.value["quantity"],
+          ),
+        );
       } else {
-        print(item.value["templateId"]);
+        // print(item.value["templateId"]);
         items.add(
           ProfileItem(
             client,
@@ -75,4 +104,38 @@ class CampaignProfile extends McpProfile {
     client.log(LogLevel.info,
         "Campaign profile module initialized [${client.accountId}]");
   }
+
+  /// get account resources of the profile
+  List<AccountResource> get accountResources =>
+      items.whereType<AccountResource>().toList();
+
+  /// get stw heroes of the profile
+  List<STWHero> get heroes => items.whereType<STWHero>().toList();
+
+  /// ninja type heroes of the profile
+  List<STWHero> get ninjaHeroes =>
+      heroes.where((hero) => hero.type == "ninja").toList();
+
+  /// constructor type heroes of the profile
+  List<STWHero> get constructorHeroes =>
+      heroes.where((hero) => hero.type == "constructor").toList();
+
+  /// commando type heroes of the profile
+  List<STWHero> get commandoHeroes =>
+      heroes.where((hero) => hero.type == "commando").toList();
+
+  /// outlander type heroes of the profile
+  List<STWHero> get outlanderHeroes =>
+      heroes.where((hero) => hero.type == "outlander").toList();
+
+  /// get stw schematics of the profile
+  List<STWSchematic> get schematics => items.whereType<STWSchematic>().toList();
+
+  /// get stw weapons of the profile
+  List<STWSchematic> get weapons =>
+      schematics.where((schematic) => schematic.type == "weapon").toList();
+
+  /// get stw trap of the profile
+  List<STWSchematic> get traps =>
+      schematics.where((schematic) => schematic.type == "trap").toList();
 }

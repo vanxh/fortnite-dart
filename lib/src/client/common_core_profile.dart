@@ -1,6 +1,9 @@
 import "client.dart";
 import "mcp_profile.dart";
+
 import "../structures/profile_item.dart";
+import "../structures/mtx_item.dart";
+
 import "../../resources/fortnite_profile_ids.dart";
 import "../../resources/mcp_operations.dart";
 

@@ -100,3 +100,24 @@ Map<String, String> stwRarities = {
   "sr": "legendary",
   "ur": "mythic",
 };
+
+/// stw survivor lead synergies
+Map<String, String> stwSurvivorLeadSynergy = {
+  "trainingteam": "IsTrainer",
+  "fireteamalpha": "IsSoldier",
+  "closeassaultsquad": "IsMartialArtist",
+  "thethinktank": "IsInventor",
+  "emtsquad": "IsDoctor",
+  "corpsofengineering": "IsEngineer",
+  "scoutingparty": "IsExplorer",
+  "gadgeteers": "IsGadgeteer",
+};
+
+/// regex to get tier from template id
+RegExp tierRegex = RegExp(r"t([0-9]+)$");
+
+/// regex to get rarity of schematic from template id
+RegExp schematicRarityRegex = RegExp(r"_(c|uc|r|vr|sr|ur)_(?=(crystal|ore|t))");
+
+/// regex to get if a schematic is ore or crystal or null
+RegExp oreOrCrystalRegex = RegExp(r"(crystal|ore)_t[0-9]+");
