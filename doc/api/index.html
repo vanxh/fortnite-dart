@@ -51,14 +51,13 @@
 <h2 id="installation">Installation</h2>
 <p>Add this to your package's <code>pubspec.yaml</code> file:</p>
 <pre class="language-yaml"><code class="language-yaml">dependencies:
-    fortnite_api: any
+    fortnite: any
 </code></pre>
 <p>then run in terminal</p>
 <pre class="language-dart"><code>dart pub get
 </code></pre>
 <p>or use your prefferd text editor or IDE to install the plugin.</p>
 <h2 id="usage-example">Usage Example</h2>
-<p>Main Fortnite Package Usage:</p>
 <pre class="language-dart"><code class="language-dart">import "dart:io";
 import "dart:convert";
 import "package:fortnite/fortnite.dart";
@@ -127,18 +126,6 @@ void main() async {
       "${client.displayName} you have ${client.commonCore.totalVbucks} V-Bucks");
 }
 </code></pre>
-<p><a href="https://fortniteapi.io">FortniteApi.io</a> Package Usage:</p>
-<pre class="language-dart"><code class="language-dart">import "package:fortnite/fortnite_api_io.dart";
-
-void main() async {
-  final FortniteApiIo fn = FortniteApiIo(
-    apiKey: "YOUR API KEY",
-  );
-
-  ChallengeResponse c = await fn.getChallenges();
-  print("There are ${c.bundles.length} challenge bundles available.");
-}
-</code></pre>
 <h2 id="links">Links</h2>
 <ul>
 <li><a href="https://discord.gg/fishstick">Discord</a></li>
@@ -194,15 +181,15 @@ void main() async {
 <dd> 
 </dd>
 
-          <dt id="fortnite_api_io">
-  <span class="name"><a href="fortnite_api_io/fortnite_api_io-library.html">fortnite_api_io</a></span> 
+          <dt id="fortnite_profile_ids">
+  <span class="name"><a href="resources_fortnite_profile_ids/resources_fortnite_profile_ids-library.html">fortnite_profile_ids</a></span> 
 
 </dt>
 <dd> 
 </dd>
 
-          <dt id="fortnite_profile_ids">
-  <span class="name"><a href="resources_fortnite_profile_ids/resources_fortnite_profile_ids-library.html">fortnite_profile_ids</a></span> 
+          <dt id="homebase_rating_keys">
+  <span class="name"><a href="resources_homebase_rating_keys/resources_homebase_rating_keys-library.html">homebase_rating_keys</a></span> 
 
 </dt>
 <dd> 
@@ -239,8 +226,8 @@ void main() async {
       <li><a href="resources_endpoints/resources_endpoints-library.html">endpoints</a></li>
       <li><a href="resources_epic_services/resources_epic_services-library.html">epic_services</a></li>
       <li><a href="fortnite/fortnite-library.html">fortnite</a></li>
-      <li><a href="fortnite_api_io/fortnite_api_io-library.html">fortnite_api_io</a></li>
       <li><a href="resources_fortnite_profile_ids/resources_fortnite_profile_ids-library.html">fortnite_profile_ids</a></li>
+      <li><a href="resources_homebase_rating_keys/resources_homebase_rating_keys-library.html">homebase_rating_keys</a></li>
       <li><a href="resources_mcp_operations/resources_mcp_operations-library.html">mcp_operations</a></li>
 </ol>
 
@@ -254,7 +241,7 @@ void main() async {
 <footer>
   <span class="no-break">
     fortnite
-      1.1.0
+      1.1.1
   </span>
 
   

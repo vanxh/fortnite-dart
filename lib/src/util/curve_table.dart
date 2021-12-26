@@ -1,17 +1,10 @@
 /// curve table reader
 class CurveTable {
   /// keys of the curve table
-  List<List<num>> keys = [];
+  late List<List<num>> keys;
 
   /// curve table object
-  CurveTable(List<dynamic> data) {
-    for (var i = 0; i < data.length; i++) {
-      keys.add([
-        num.parse(data[i]?["KeyTime"].toString() ?? ""),
-        num.parse(data[i]?["KeyValue"].toString() ?? ""),
-      ]);
-    }
-  }
+  CurveTable(this.keys);
 
   /// eval curve table
   num eval(num key) {

@@ -187,8 +187,7 @@ class CampaignProfile extends McpProfile {
   /// returns power level rating of profile
   num get powerLevel {
     int totalFORT = fortStats.values.reduce((prev, cur) => prev + cur);
-    print(totalFORT);
-    return powerLevelCurve.eval(totalFORT);
+    return powerLevelCurve.eval(totalFORT * 4);
   }
 
   /// get total FORT stats of the profile.
@@ -220,8 +219,6 @@ class CampaignProfile extends McpProfile {
         }
       }
     }
-
-    print("$fortitude $resistance $offense $tech");
 
     return {
       "fortitude": fortitude,

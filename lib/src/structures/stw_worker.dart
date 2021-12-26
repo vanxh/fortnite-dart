@@ -40,13 +40,15 @@ class STWWorker extends ProfileItem {
       tierRegex.firstMatch(templateId.split(":")[1])?.group(1) ?? "01");
 
   /// get rarity
-  String get rarity =>
-      stwRarities[templateId
-          .split(":")[1]
-          .split("_")[templateId.split(":")[1].split("_").length - 2]] ??
-      templateId
-          .split(":")[1]
-          .split("_")[templateId.split(":")[1].split("_").length - 2];
+  String get rarity {
+    List fields = templateId.split(":")[1].split("_");
+    fields.removeAt(0);
+    fields.removeLast();
+
+    String r = type == "manager" ? fields.first : fields.last;
+
+    return stwRarities[r] ?? r;
+  }
 
   /// get gender
   String get gender =>
@@ -94,7 +96,7 @@ class STWWorker extends ProfileItem {
           "epic": [4, 4],
           "legendary": [5, 5],
           "mythic": [6, 0],
-        }[rarity]?[isLeader ? 0 : 1] ??
+        }[rarity]?[isLeader ? 1 : 0] ??
         0;
   }
 
