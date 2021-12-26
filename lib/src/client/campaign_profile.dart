@@ -34,9 +34,20 @@ class CampaignProfile extends McpProfile {
     stats = res["profileChanges"][0]["profile"]["stats"]["attributes"];
 
     for (var item in _items.entries) {
-      if (item.value["templateId"].toString().startsWith("Currency:Mtx")) {
+      if (item.value["templateId"].toString().startsWith("AccountResource:")) {
         items.add(
-          MtxItem(
+          AccountResource(
+            client,
+            id: item.key,
+            profileId: profileId,
+            templateId: item.value["templateId"],
+            attributes: item.value["attributes"],
+            quantity: item.value["quantity"],
+          ),
+        );
+      } else if (item.value["templateId"].toString().startsWith("Hero:")) {
+        items.add(
+          STWHero(
             client,
             id: item.key,
             profileId: profileId,

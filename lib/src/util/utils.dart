@@ -90,3 +90,13 @@ Map<String, String> vbucksPlatform = {
   "Live": "Xbox",
   "PSN": "Playstation",
 };
+
+/// Fortnite rarities object
+Map<String, String> stwRarities = {
+  "c": "common",
+  "uc": "uncommon",
+  "r": "rare",
+  "vr": "epic",
+  "sr": "legendary",
+  "ur": "mythic",
+};
