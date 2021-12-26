@@ -2,6 +2,7 @@ import "package:logging/logging.dart";
 import "http.dart";
 import "auth.dart";
 import "common_core_profile.dart";
+import "campaign_profile.dart";
 import "../structures/client_options.dart";
 import "../structures/http_response.dart";
 import "../../resources/auth_clients.dart";
@@ -39,6 +40,9 @@ class Client {
   /// common core profile for client
   late CommonCoreProfile commonCore;
 
+  /// campaign profile for client
+  late CampaignProfile campaign;
+
   /// session for the account
   String session = "";
 
@@ -62,7 +66,12 @@ class Client {
 
     /// initialize auth object
     auth = FortniteAuth(this);
+
+    /// initialize common core profile object
     commonCore = CommonCoreProfile(this);
+
+    /// initialize campaign profile object
+    campaign = CampaignProfile(this);
 
     if (overrideSession != "") {
       session = overrideSession;
