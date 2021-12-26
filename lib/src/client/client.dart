@@ -168,7 +168,7 @@ class Client {
         );
       }
 
-      throw Exception(res.error["errorCode"] ?? res.error);
+      throw Exception(res.error["errorMessage"] ?? res.error);
     }
   }
 }

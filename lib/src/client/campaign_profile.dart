@@ -121,8 +121,8 @@ class CampaignProfile extends McpProfile {
     }
 
     initialized = true;
-    client.log(LogLevel.info,
-        "Campaign profile module initialized [${client.accountId}]");
+    client.log(
+        LogLevel.info, "Campaign profile module initialized [$accountId]");
   }
 
   /// get account resources of the profile
