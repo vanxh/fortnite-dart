@@ -67,3 +67,4 @@
 ## 1.1.0
 
 -   Updated example.
+-   Get vbucks purchase breakdown method to common core profile manager.

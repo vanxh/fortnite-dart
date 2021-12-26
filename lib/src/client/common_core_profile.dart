@@ -78,6 +78,29 @@ class CommonCoreProfile extends McpProfile {
     return vbucksBreakdown.map((e) => e.quantity).reduce((a, b) => a + b);
   }
 
+  /// get total vbucks purchased till now of profile in breakdown
+  Map<dynamic, dynamic> get vbucksPurchased {
+    confirmInitialized();
+
+    if (stats["in_app_purchases"]?["fulfillmentCounts"] == null) {
+      return {};
+    }
+
+    List _purchases =
+        (stats["in_app_purchases"]["fulfillmentCounts"] as Map<String, dynamic>)
+            .entries
+            .where((element) => element.key.startsWith("FN_"))
+            .toList();
+
+    if (_purchases.isEmpty) {
+      return {};
+    }
+
+    return _purchases
+        .map((p) => {p.key.split("_")[1]: p.value})
+        .reduce((value, element) => {...value, ...element});
+  }
+
   /// get total vbucks purchased till now of profile
   int get totalVbucksPurchased {
     confirmInitialized();
