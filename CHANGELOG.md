@@ -71,5 +71,6 @@
 -   Added campaign profile manager.
 -   Account resource object.
 -   STW Hero object.
+-   STW Worker class.
 -   STW Schematic object.
--   Getters for heroes , schematics , traps, weapons , different types of heroes in campaign profile.
+-   Getters for heroes , workers , schematics , traps, weapons , different types of heroes in campaign profile.

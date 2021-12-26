@@ -40,63 +40,72 @@ class CampaignProfile extends McpProfile {
     stats = res["profileChanges"][0]["profile"]["stats"]["attributes"];
 
     for (var item in _items.entries) {
-      if (item.value["templateId"].toString().startsWith("AccountResource:")) {
-        items.add(
-          AccountResource(
-            client,
-            id: item.key,
-            profileId: profileId,
-            templateId: item.value["templateId"],
-            attributes: item.value["attributes"],
-            quantity: item.value["quantity"],
-          ),
-        );
-      } else if (item.value["templateId"].toString().startsWith("Hero:")) {
-        items.add(
-          STWHero(
-            client,
-            id: item.key,
-            profileId: profileId,
-            templateId: item.value["templateId"],
-            attributes: item.value["attributes"],
-            quantity: item.value["quantity"],
-          ),
-        );
-      } else if (item.value["templateId"].toString().startsWith("Worker:")) {
-        print(item.value);
-        items.add(
-          STWWorker(
-            client,
-            id: item.key,
-            profileId: profileId,
-            templateId: item.value["templateId"],
-            attributes: item.value["attributes"],
-            quantity: item.value["quantity"],
-          ),
-        );
-      } else if (item.value["templateId"].toString().startsWith("Schematic:")) {
-        items.add(
-          STWSchematic(
-            client,
-            id: item.key,
-            profileId: profileId,
-            templateId: item.value["templateId"],
-            attributes: item.value["attributes"],
-            quantity: item.value["quantity"],
-          ),
-        );
-      } else {
-        // print(item.value["templateId"]);
-        items.add(
-          ProfileItem(
-            client,
-            id: item.key,
-            profileId: profileId,
-            templateId: item.value["templateId"],
-            attributes: item.value["attributes"],
-            quantity: item.value["quantity"],
-          ),
-        );
+      switch (item.value["templateId"].toString().split(":")[0]) {
+        case "AccountResource":
+          items.add(
+            AccountResource(
+              client,
+              id: item.key,
+              profileId: profileId,
+              templateId: item.value["templateId"],
+              attributes: item.value["attributes"],
+              quantity: item.value["quantity"],
+            ),
+          );
+          break;
+
+        case "Hero":
+          items.add(
+            STWHero(
+              client,
+              id: item.key,
+              profileId: profileId,
+              templateId: item.value["templateId"],
+              attributes: item.value["attributes"],
+              quantity: item.value["quantity"],
+            ),
+          );
+          break;
+
+        case "Worker":
+          items.add(
+            STWWorker(
+              client,
+              id: item.key,
+              profileId: profileId,
+              templateId: item.value["templateId"],
+              attributes: item.value["attributes"],
+              quantity: item.value["quantity"],
+            ),
+          );
+          break;
+
+        case "Schematic":
+          items.add(
+            STWSchematic(
+              client,
+              id: item.key,
+              profileId: profileId,
+              templateId: item.value["templateId"],
+              attributes: item.value["attributes"],
+              quantity: item.value["quantity"],
+            ),
+          );
+          break;
+
+        default:
+          print(item.value["templateId"]);
+          items.add(
+            ProfileItem(
+              client,
+              id: item.key,
+              profileId: profileId,
+              templateId: item.value["templateId"],
+              attributes: item.value["attributes"],
+              quantity: item.value["quantity"],
+            ),
+          );
+          break;
       }
     }
 
@@ -138,4 +147,11 @@ class CampaignProfile extends McpProfile {
   /// get stw trap of the profile
   List<STWSchematic> get traps =>
       schematics.where((schematic) => schematic.type == "trap").toList();
+
+  /// get workers of the profile
+  List<STWWorker> get workers => items.whereType<STWWorker>().toList();
+
+  /// get manager workers of the profile
+  List<STWWorker> get managers =>
+      workers.where((worker) => worker.type == "manager").toList();
 }
