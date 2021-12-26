@@ -9,9 +9,15 @@ import "../structures/stw_schematic.dart";
 
 import "../../resources/fortnite_profile_ids.dart";
 import "../../resources/mcp_operations.dart";
+import "../../resources/homebase_rating_keys.dart";
+
+import "../util/curve_table.dart";
 
 /// campaign profile manager library
 class CampaignProfile extends McpProfile {
+  /// power level curve table reader
+  CurveTable powerLevelCurve = CurveTable(homebaseRatingKeys);
+
   /// campaign profile object
   CampaignProfile(Client client)
       : super(
@@ -94,7 +100,7 @@ class CampaignProfile extends McpProfile {
           break;
 
         default:
-          print(item.value["templateId"]);
+          // print(item.value["templateId"]);
           items.add(
             ProfileItem(
               client,
@@ -154,4 +160,174 @@ class CampaignProfile extends McpProfile {
   /// get manager workers of the profile
   List<STWWorker> get managers =>
       workers.where((worker) => worker.type == "manager").toList();
+
+  /// returns survivor squads of the profile.
+  /// there are 8 survivors squads in total.
+  /// each squad can have a max of 8 survivors.
+  Map<String, List<STWWorker>> get survivorSquads {
+    Map<String, List<STWWorker>> _squads = {
+      "trainingteam": [],
+      "fireteamalpha": [],
+      "closeassaultsquad": [],
+      "thethinktank": [],
+      "emtsquad": [],
+      "corpsofengineering": [],
+      "scoutingparty": [],
+      "gadgeteers": [],
+    };
+
+    for (STWWorker worker
+        in workers.where((element) => element.squad != null)) {
+      _squads[worker.squad?["name"]]?.add(worker);
+    }
+
+    return _squads;
+  }
+
+  /// returns power level rating of profile
+  num get powerLevel {
+    int totalFORT = fortStats.values.reduce((prev, cur) => prev + cur);
+    print(totalFORT);
+    return powerLevelCurve.eval(totalFORT);
+  }
+
+  /// get total FORT stats of the profile.
+  /// this is the sum of FORT stats of [survivorFORT] and [researchFORT].
+  Map<String, int> get fortStats {
+    int fortitude = 0;
+    int resistance = 0;
+    int offense = 0;
+    int tech = 0;
+
+    for (var fort in [survivorFORT, researchFORT]) {
+      for (var key in fort.keys) {
+        switch (key) {
+          case "fortitude":
+            fortitude += fort[key] ?? 0;
+            break;
+
+          case "resistance":
+            resistance += fort[key] ?? 0;
+            break;
+
+          case "offense":
+            offense += fort[key] ?? 0;
+            break;
+
+          case "tech":
+            tech += fort[key] ?? 0;
+            break;
+        }
+      }
+    }
+
+    print("$fortitude $resistance $offense $tech");
+
+    return {
+      "fortitude": fortitude,
+      "resistance": resistance,
+      "offense": offense,
+      "tech": tech,
+    };
+  }
+
+  /// get FORT stats from survivor squads.
+  Map<String, int> get survivorFORT {
+    int fortitude = 0;
+    int resistance = 0;
+    int offense = 0;
+    int tech = 0;
+
+    for (var squad in survivorSquads.values.toList()) {
+      dynamic leadWorker = squad.firstWhere((s) => s.squad?["slotIdx"] == 0);
+
+      for (STWWorker worker in squad) {
+        num totalBonus = worker.rating;
+
+        if (worker.squad?["slotIdx"] == 0) {
+          totalBonus += worker.leadBonus;
+        } else if (leadWorker != null) {
+          totalBonus += worker.bonus(leadWorker);
+        }
+
+        switch (worker.squad?["type"]) {
+          case "medicine":
+            fortitude += totalBonus.toInt();
+            break;
+
+          case "arms":
+            offense += totalBonus.toInt();
+            break;
+
+          case "synthesis":
+            tech += totalBonus.toInt();
+            break;
+
+          case "scavenging":
+            resistance += totalBonus.toInt();
+            break;
+        }
+      }
+    }
+
+    return {
+      "fortitude": fortitude,
+      "resistance": resistance,
+      "offense": offense,
+      "tech": tech,
+    };
+  }
+
+  /// get FORT stats by research of profile
+  Map<String, int> get researchFORT {
+    int fortitude = 0;
+    int resistance = 0;
+    int offense = 0;
+    int tech = 0;
+
+    for (var item in items.where((i) =>
+        i.templateId.contains("Stat:") && !i.templateId.contains("phoenix"))) {
+      if (item.templateId.contains("fortitude")) {
+        fortitude += item.quantity;
+      } else if (item.templateId.contains("resistance")) {
+        resistance += item.quantity;
+      } else if (item.templateId.contains("offense")) {
+        offense += item.quantity;
+      } else if (item.templateId.contains("tech")) {
+        tech += item.quantity;
+      }
+    }
+
+    return {
+      "fortitude": fortitude,
+      "resistance": resistance,
+      "offense": offense,
+      "tech": tech,
+    };
+  }
+
+  /// get ventures FORT stats of profile
+  Map<String, int> get venturesFORT {
+    Map<String, int> _venturesFORT = {
+      "fortitude": 0,
+      "resistance": 0,
+      "offense": 0,
+      "tech": 0,
+    };
+
+    for (ProfileItem item in items.where((i) =>
+        i.templateId.contains("Stat:") && i.templateId.contains("phoenix"))) {
+      if (item.templateId.contains("fortitude")) {
+        _venturesFORT["fortitude"] = item.quantity;
+      } else if (item.templateId.contains("resistance")) {
+        _venturesFORT["resistance"] = item.quantity;
+      } else if (item.templateId.contains("offense")) {
+        _venturesFORT["offense"] = item.quantity;
+      } else if (item.templateId.contains("technology")) {
+        _venturesFORT["tech"] = item.quantity;
+      }
+    }
+
+    return _venturesFORT;
+  }
 }

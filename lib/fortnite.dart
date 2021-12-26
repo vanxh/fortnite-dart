@@ -9,8 +9,14 @@ export "src/structures/device_auth.dart";
 export "src/structures/external_auth.dart";
 export "src/structures/http_response.dart";
 export "src/structures/profile_item.dart";
+export "src/structures/mtx_item.dart";
+export "src/structures/stw_hero.dart";
+export "src/structures/stw_resource.dart";
+export "src/structures/stw_schematic.dart";
+export "src/structures/stw_worker.dart";
 
 export "src/util/utils.dart";
+export "src/util/curve_table.dart";
 
 export "src/client/client.dart";
 export "src/client/http.dart";
