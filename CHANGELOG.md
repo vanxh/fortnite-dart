@@ -75,7 +75,7 @@
 -   STW Schematic object.
 -   Getters for heroes , workers , schematics , traps, weapons , different types of heroes in campaign profile.
 
-# 1.1.1
+## 1.1.1
 
 -   An important bug fix in README.md
 -   Made [fortnite_api_io](https://github.com/vanxh/fortnite_api_io) library a seperate package.
@@ -83,3 +83,7 @@
 -   FORT Stats getter in campaign profile.
 -   Curve table reader.
 -   Power level calculator in campaign profile.
+
+## 1.1.2
+
+-   Ability to check campaign profile of other players.

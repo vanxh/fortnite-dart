@@ -26,15 +26,20 @@ class CampaignProfile extends McpProfile {
         );
 
   /// init the profile
-  Future<dynamic> init() async {
+  Future<dynamic> init(String? accId) async {
     if (initialized == true) return;
+
+    if (accId != null) {
+      accountId = accId;
+    }
 
     var res = await client.send(
       method: "POST",
       url: MCP(
         FortniteProfile.campaign,
-        accountId: client.accountId,
-      ).QueryProfile,
+        accountId: accountId,
+        route: "public",
+      ).QueryPublicProfile,
       body: {},
     );
 

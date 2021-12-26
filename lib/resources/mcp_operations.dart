@@ -17,8 +17,15 @@ class MCP {
   /// profile id as string
   late String profileId;
 
+  /// route
+  late String route;
+
   /// Get mcp request url
-  MCP(this._profileId, {required this.accountId}) {
+  MCP(
+    this._profileId, {
+    required this.accountId,
+    this.route = "client",
+  }) {
     switch (_profileId) {
       case FortniteProfile.athena:
         profileId = "athena";
@@ -59,9 +66,10 @@ class MCP {
     String operation = "QueryProfile",
     String overrideProfile = "",
   }) {
-    return "$_baseURL/$accountId/client/$operation?profileId=${overrideProfile == "" ? profileId : overrideProfile}";
+    return "$_baseURL/$accountId/$route/$operation?profileId=${overrideProfile == "" ? profileId : overrideProfile}";
   }
 
+  String get QueryPublicProfile => url(operation: "QueryPublicProfile");
   String get QueryProfile => url(operation: "QueryProfile");
   String get ClaimLoginReward => url(operation: "ClaimLoginReward");
   String get ClientQuestLogin => url(operation: "ClientQuestLogin");
