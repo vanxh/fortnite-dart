@@ -110,4 +110,32 @@ class MCP {
   String get AssignWorkerToSquad => url(operation: "AssignWorkerToSquad");
   String get ApplyAlteration => url(operation: "ApplyAlteration");
   String get ActivateConsumable => url(operation: "ActivateConsumable");
+  String get SetAffiliateName => url(operation: "SetAffiliateName");
+  String get ClaimMfaEnabled => url(operation: "ClaimMfaEnabled");
+  String get SetLoadoutName => url(operation: "SetLoadoutName");
+  String get SetActiveHeroLoadout => url(operation: "SetActiveHeroLoadout");
+  String get SetHomebaseName => url(operation: "SetHomebaseName");
+  String get PurchaseOrUpgradeHomebaseNode =>
+      url(operation: "PurchaseOrUpgradeHomebaseNode");
+  String get AbandonExpedition => url(operation: "AbandonExpedition");
+  String get UpdateOutpostCore => url(operation: "UpdateOutpostCore");
+  String get UpdateDeployableBaseTierProgression =>
+      url(operation: "UpdateDeployableBaseTierProgression");
+  String get CreateOrUpgradeOutpostItem =>
+      url(operation: "CreateOrUpgradeOutpostItem");
+  String get CreateDeployableBaseItem =>
+      url(operation: "CreateDeployableBaseItem");
+  String get UpgradeSlottedItem => url(operation: "UpgradeSlottedItem");
+  String get ConvertSlottedItem => url(operation: "ConvertSlottedItem");
+  String get ClaimCollectionBookPageRewards =>
+      url(operation: "ClaimCollectionBookPageRewards");
+  String get SetBattleRoyaleBanner => url(operation: "SetBattleRoyaleBanner");
+  String get EndBattleRoyaleGame => url(operation: "EndBattleRoyaleGame");
+  String get EquipBattleRoyaleCustomization =>
+      url(operation: "EquipBattleRoyaleCustomization");
+  String get UpdateBuildingLevelAndRating =>
+      url(operation: "UpdateBuildingLevelAndRating");
+  String get UnloadWarehouse => url(operation: "UnloadWarehouse");
+  String get DestroyWorldItems => url(operation: "DestroyWorldItems");
+  String get StorageTransfer => url(operation: "StorageTransfer");
 }

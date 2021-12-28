@@ -149,4 +149,20 @@ class CommonCoreProfile extends McpProfile {
 
     return stats["mtx_affiliate"];
   }
+
+  /// change currently supported creator by the profile.
+  Future<void> setSupportedCreator(String newCreator) async {
+    confirmInitialized();
+
+    return await client.send(
+      method: "POST",
+      url: MCP(
+        FortniteProfile.common_core,
+        accountId: client.accountId,
+      ).SetAffiliateName,
+      body: {
+        "affiliateName": newCreator,
+      },
+    );
+  }
 }
