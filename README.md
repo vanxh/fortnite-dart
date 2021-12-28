@@ -83,7 +83,12 @@ void main() async {
       deviceAuth: deviceAuth,
       logLevel: Level.ALL,
     ),
-  );
+    overrideSession: "",
+  )..onSessionUpdate.listen((update) {
+      print("Session updated for ${update.accountId}");
+
+      /// Any function you want to do with updated session.
+    });
 
   /// initialize the common core profile for the client
   await client.commonCore.init();

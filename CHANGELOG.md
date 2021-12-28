@@ -87,3 +87,5 @@
 ## 1.1.2
 
 -   Ability to check campaign profile of other players.
+-   More MCP endpoints.
+-   Set supported creator method to common core profile.

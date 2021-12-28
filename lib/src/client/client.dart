@@ -1,3 +1,4 @@
+import "dart:async";
 import "package:logging/logging.dart";
 import "http.dart";
 import "auth.dart";
@@ -45,6 +46,10 @@ class Client {
 
   /// session for the account
   String session = "";
+
+  /// session update controller
+  StreamController<Client> sessionUpdateController =
+      StreamController.broadcast();
 
   /// the main client object
   Client({
@@ -119,6 +124,9 @@ class Client {
     }
   }
 
+  /// returns the session update event stream
+  Stream<Client> get onSessionUpdate => sessionUpdateController.stream;
+
   /// Refresh session of the account
   Future<dynamic> refreshSession() async {
     log(LogLevel.debug,
@@ -130,6 +138,8 @@ class Client {
       grantData:
           "account_id=${_clientOptions.deviceAuth.accountId}&device_id=${_clientOptions.deviceAuth.deviceId}&secret=${_clientOptions.deviceAuth.secret}",
     );
+
+    sessionUpdateController.add(this);
 
     return session;
   }
