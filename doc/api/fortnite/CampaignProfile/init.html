@@ -53,7 +53,8 @@
       
 
 <span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a></span>
-<span class="name ">init</span>(<wbr>)
+<span class="name ">init</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="init-param-accId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">accId</span></span></li>
+</ol>)
 
       
 
@@ -67,15 +68,20 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;dynamic&gt; init() async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;dynamic&gt; init(String? accId) async {
   if (initialized == true) return;
+
+  if (accId != null) {
+    accountId = accId;
+  }
 
   var res = await client.send(
     method: &quot;POST&quot;,
     url: MCP(
       FortniteProfile.campaign,
-      accountId: client.accountId,
-    ).QueryProfile,
+      accountId: accountId,
+      route: &quot;public&quot;,
+    ).QueryPublicProfile,
     body: {},
   );
 
@@ -157,8 +163,8 @@
   }
 
   initialized = true;
-  client.log(LogLevel.info,
-      &quot;Campaign profile module initialized [${client.accountId}]&quot;);
+  client.log(
+      LogLevel.info, &quot;Campaign profile module initialized [$accountId]&quot;);
 }</code></pre>
 </section>
 
@@ -245,7 +251,7 @@
 <footer>
   <span class="no-break">
     fortnite
-      1.1.1
+      1.1.2
   </span>
 
   

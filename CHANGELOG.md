@@ -90,3 +90,6 @@
 -   More MCP endpoints.
 -   Set supported creator method to common core profile.
 -   onSessionUpdate event stream on main client.
+-   Added fromJson method to client options and device auth.
+-   Updated example.
+-   Added toJson method to device auth.

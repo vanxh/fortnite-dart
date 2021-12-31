@@ -21,6 +21,7 @@ class ExternalAuth {
   /// region data of external auth
   late String regionInfo;
 
+  /// external auth object
   ExternalAuth({
     required this.accountId,
     required this.type,
