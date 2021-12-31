@@ -28,4 +28,12 @@ class DeviceAuth {
         displayName:
             json["displayName"] is String ? json["displayName"] ?? "" : "",
       );
+
+  /// device auth to json method
+  Map<String, String> toJson() => {
+        "accountId": accountId,
+        "deviceId": deviceId,
+        "secret": secret,
+        "displayName": displayName,
+      };
 }
