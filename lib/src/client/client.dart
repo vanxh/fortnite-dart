@@ -48,7 +48,7 @@ class Client {
   String session = "";
 
   /// session update controller
-  StreamController<Client> sessionUpdateController =
+  final StreamController<Client> _sessionUpdateController =
       StreamController.broadcast();
 
   /// the main client object
@@ -125,7 +125,7 @@ class Client {
   }
 
   /// returns the session update event stream
-  Stream<Client> get onSessionUpdate => sessionUpdateController.stream;
+  Stream<Client> get onSessionUpdate => _sessionUpdateController.stream;
 
   /// Refresh session of the account
   Future<dynamic> refreshSession() async {
@@ -139,7 +139,7 @@ class Client {
           "account_id=${_clientOptions.deviceAuth.accountId}&device_id=${_clientOptions.deviceAuth.deviceId}&secret=${_clientOptions.deviceAuth.secret}",
     );
 
-    sessionUpdateController.add(this);
+    _sessionUpdateController.add(this);
 
     return session;
   }

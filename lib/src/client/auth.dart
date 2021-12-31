@@ -113,17 +113,7 @@ class FortniteAuth {
     );
 
     for (dynamic auth in res) {
-      auths.add(
-        ExternalAuth(
-          accountId: auth["accountId"] ?? "",
-          externalAuthId: auth["externalAuthId"] ?? "",
-          dateAdded: auth["dateAdded"] ?? "",
-          externalAuthIdType: auth["externalAuthIdType"] ?? "",
-          externalDisplayName: auth["externalDisplayName"] ?? "",
-          regionInfo: auth["regionInfo"] ?? "",
-          type: auth["type"] ?? "",
-        ),
-      );
+      auths.add(ExternalAuth.fromJson(auth));
     }
 
     return auths;
