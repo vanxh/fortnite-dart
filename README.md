@@ -66,15 +66,11 @@ void main() async {
   }
 
   /// read the device auth from the file
-  var deviceAuthDetails = jsonDecode(await deviceAuthFile.readAsString());
+  final Map<String, dynamic> deviceAuthDetails =
+      jsonDecode(await deviceAuthFile.readAsString());
 
   /// create the device object
-  deviceAuth = DeviceAuth(
-    accountId: deviceAuthDetails["accountId"],
-    deviceId: deviceAuthDetails["deviceId"],
-    secret: deviceAuthDetails["secret"],
-    displayName: deviceAuthDetails["displayName"],
-  );
+  deviceAuth = DeviceAuth.fromJson(deviceAuthDetails);
 
   /// create the client object
   final Client client = Client(
