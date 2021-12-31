@@ -1,7 +1,6 @@
 import "dart:io";
 import "dart:convert";
 import "package:fortnite/fortnite.dart";
-import "package:logging/logging.dart";
 
 final File deviceAuthFile = File("device_auth.json");
 

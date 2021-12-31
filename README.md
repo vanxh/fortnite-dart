@@ -28,7 +28,6 @@ or use your prefferd text editor or IDE to install the plugin.
 import "dart:io";
 import "dart:convert";
 import "package:fortnite/fortnite.dart";
-import "package:logging/logging.dart";
 
 final File deviceAuthFile = File("device_auth.json");
 

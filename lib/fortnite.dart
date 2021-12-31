@@ -25,3 +25,5 @@ export "src/client/auth.dart";
 export "src/client/mcp_profile.dart";
 export "src/client/common_core_profile.dart";
 export "src/client/campaign_profile.dart";
+
+export "package:logging/logging.dart" show Level;
