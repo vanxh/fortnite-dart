@@ -31,4 +31,20 @@ class ExternalAuth {
     required this.dateAdded,
     required this.regionInfo,
   });
+
+  /// from json method for external auth class object
+  factory ExternalAuth.fromJson(Map<String, dynamic> json) => ExternalAuth(
+        accountId: json["accountId"] is String ? json["accountId"] : "",
+        type: json["type"] is String ? json["type"] : "",
+        externalAuthId:
+            json["externalAuthId"] is String ? json["externalAuthId"] : "",
+        externalAuthIdType: json["externalAuthIdType"] is String
+            ? json["externalAuthIdType"]
+            : "",
+        externalDisplayName: json["externalDisplayName"] is String
+            ? json["externalDisplayName"]
+            : "",
+        dateAdded: json["dateAdded"] is String ? json["dateAdded"] : "",
+        regionInfo: json["regionInfo"] is String ? json["regionInfo"] : "",
+      );
 }
