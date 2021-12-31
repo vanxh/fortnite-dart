@@ -76,17 +76,7 @@
   );
 
   for (dynamic auth in res) {
-    auths.add(
-      ExternalAuth(
-        accountId: auth[&quot;accountId&quot;] ?? &quot;&quot;,
-        externalAuthId: auth[&quot;externalAuthId&quot;] ?? &quot;&quot;,
-        dateAdded: auth[&quot;dateAdded&quot;] ?? &quot;&quot;,
-        externalAuthIdType: auth[&quot;externalAuthIdType&quot;] ?? &quot;&quot;,
-        externalDisplayName: auth[&quot;externalDisplayName&quot;] ?? &quot;&quot;,
-        regionInfo: auth[&quot;regionInfo&quot;] ?? &quot;&quot;,
-        type: auth[&quot;type&quot;] ?? &quot;&quot;,
-      ),
-    );
+    auths.add(ExternalAuth.fromJson(auth));
   }
 
   return auths;
@@ -154,7 +144,7 @@
 <footer>
   <span class="no-break">
     fortnite
-      1.1.2
+      1.1.3
   </span>
 
   
