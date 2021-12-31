@@ -3,6 +3,7 @@ export "resources/endpoints.dart";
 export "resources/fortnite_profile_ids.dart";
 export "resources/mcp_operations.dart";
 export "resources/auth_clients.dart";
+export "resources/account_resources.dart" show accountResources;
 
 export "src/structures/client_options.dart";
 export "src/structures/device_auth.dart";

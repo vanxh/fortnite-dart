@@ -22,9 +22,11 @@ class MtxItem extends ProfileItem {
           quantity: quantity,
         );
 
+  /// get type of mtx item
   String get type =>
       vbucksType[templateId.split(":")[1]] ?? templateId.split(":")[1];
 
+  /// get platform of mtx item
   String get platform =>
       vbucksPlatform[attributes["platform"]] ?? attributes["platform"];
 }
