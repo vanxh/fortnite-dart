@@ -93,3 +93,8 @@
 -   Added fromJson method to client options and device auth.
 -   Updated example.
 -   Added toJson method to device auth.
+
+## 1.1.3
+
+-   fromJson method to external auths.
+-   save the world account resources dart class list.
