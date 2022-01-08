@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the deviceId property from the Client class, for the Dart programming language.">
-  <title>deviceId property - Client class - fortnite library - Dart API</title>
+  <meta name="description" content="API docs for the getAvatars method from the Client class, for the Dart programming language.">
+  <title>getAvatars method - Client class - fortnite library - Dart API</title>
 
 
   
@@ -32,9 +32,9 @@
     <li><a href="../../index.html">fortnite</a></li>
     <li><a href="../../fortnite/fortnite-library.html">fortnite</a></li>
     <li><a href="../../fortnite/Client-class.html">Client</a></li>
-    <li class="self-crumb">deviceId property</li>
+    <li class="self-crumb">getAvatars method</li>
   </ol>
-  <div class="self-name">deviceId</div>
+  <div class="self-name">getAvatars</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -45,32 +45,47 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-property">deviceId</span> property 
+<h1><span class="kind-method">getAvatars</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
+    <section class="multi-line-signature">
+      
 
-        
-<section id="getter">
+<span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.15.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../fortnite/Avatar-class.html">Avatar</a></span>&gt;</span></span>&gt;</span></span>
+<span class="name ">getAvatars</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getAvatars-param-accountIds"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">accountIds</span></span></li>
+</ol>)
 
-<section class="multi-line-signature">
-  <span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span>
-  <span class="name ">deviceId</span>
-  
+      
 
-</section>
-
-
+    </section>
+    
 <section class="desc markdown">
-  <p>returns device id of client</p>
+  <p>returns the avatar of the given account ids</p>
 </section>
 
 
+    
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">String get deviceId =&gt; _clientOptions.deviceAuth.deviceId;</code></pre>
-</section>
+  <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;Avatar&gt;&gt; getAvatars(List&lt;String&gt; accountIds) async {
+  List&lt;Avatar&gt; avatars = [];
 
+  for (int i = 0; i &lt; accountIds.length; i += 100) {
+    List&lt;String&gt; ids = accountIds.sublist(
+        i, i + 100 &gt; accountIds.length ? accountIds.length : i + 100);
+
+    var res = await send(
+      method: &quot;GET&quot;,
+      url: &quot;${Endpoints().accountAvatars}?accountIds=${ids.join(&quot;,&quot;)}&quot;,
+    );
+
+    (res as List)
+        .map((e) =&gt; avatars.add(Avatar(e[&quot;accountId&quot;], e[&quot;avatarId&quot;])));
+  }
+
+  return avatars;
+}</code></pre>
 </section>
 
 
@@ -87,7 +102,7 @@
   <li><a href="../../index.html">fortnite</a></li>
   <li><a href="../../fortnite/fortnite-library.html">fortnite</a></li>
   <li><a href="../../fortnite/Client-class.html">Client</a></li>
-  <li class="self-crumb">deviceId property</li>
+  <li class="self-crumb">getAvatars method</li>
 </ol>
 
 

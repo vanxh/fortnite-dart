@@ -98,3 +98,5 @@
 
 -   fromJson method to external auths.
 -   save the world account resources dart class list.
+-   Avatar object.
+-   getAvatars method.

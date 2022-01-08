@@ -4,6 +4,10 @@ class EpicServices {
   String get accountService =>
       "https://account-public-service-prod03.ol.epicgames.com";
 
+  /// avatar service
+  String get avatarService =>
+      "https://avatar-service-prod.identity.live.on.epicgames.com";
+
   /// launcher caldera service
   String get calderaService =>
       "https://caldera-service-prod.ecosec.on.epicgames.com";

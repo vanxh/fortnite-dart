@@ -15,6 +15,7 @@ export "src/structures/stw_hero.dart";
 export "src/structures/stw_resource.dart";
 export "src/structures/stw_schematic.dart";
 export "src/structures/stw_worker.dart";
+export "src/structures/avatar.dart";
 
 export "src/util/utils.dart";
 export "src/util/curve_table.dart";

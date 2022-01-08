@@ -6,6 +6,8 @@ import "common_core_profile.dart";
 import "campaign_profile.dart";
 import "../structures/client_options.dart";
 import "../structures/http_response.dart";
+import "../structures/avatar.dart";
+import "../../resources/endpoints.dart";
 import "../../resources/auth_clients.dart";
 
 /// client object log levels
@@ -180,5 +182,25 @@ class Client {
 
       throw Exception(res.error["errorMessage"] ?? res.error);
     }
+  }
+
+  /// returns the avatar of the given account ids
+  Future<List<Avatar>> getAvatars(List<String> accountIds) async {
+    List<Avatar> avatars = [];
+
+    for (int i = 0; i < accountIds.length; i += 100) {
+      List<String> ids = accountIds.sublist(
+          i, i + 100 > accountIds.length ? accountIds.length : i + 100);
+
+      var res = await send(
+        method: "GET",
+        url: "${Endpoints().accountAvatars}?accountIds=${ids.join(",")}",
+      );
+
+      (res as List)
+          .map((e) => avatars.add(Avatar(e["accountId"], e["avatarId"])));
+    }
+
+    return avatars;
   }
 }

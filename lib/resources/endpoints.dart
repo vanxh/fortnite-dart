@@ -24,6 +24,8 @@ class Endpoints {
   String get accountEmail =>
       "${EpicServices().accountService}/account/api/public/account/email";
   String get userSearch => "${EpicServices().userSearchService}/api/v1/search";
+  String get accountAvatars =>
+      "${EpicServices().avatarService}/v1/avatar/fortnite/ids";
 
   String get brStats => "${EpicServices().statsService}/statsproxy/api/statsv2";
   String get mcp =>
