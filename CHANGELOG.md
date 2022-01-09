@@ -100,3 +100,7 @@
 -   save the world account resources dart class list.
 -   Avatar object.
 -   getAvatars method.
+
+## 1.1.4
+
+-   Bug fix.

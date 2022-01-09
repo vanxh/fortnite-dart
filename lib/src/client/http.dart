@@ -43,7 +43,7 @@ class HTTP {
       ));
 
       client.log(
-        LogLevel.debug,
+        LogLevel.info,
         "$method $url [${((DateTime.now().millisecondsSinceEpoch - start) / 1000).toStringAsFixed(2)}s]: ${res.statusCode ?? "???"} ${res.statusMessage ?? ""}",
       );
 
@@ -53,7 +53,7 @@ class HTTP {
       );
     } on DioError catch (e) {
       client.log(
-        LogLevel.debug,
+        LogLevel.info,
         "$method $url [${((DateTime.now().millisecondsSinceEpoch - start) / 1000).toStringAsFixed(2)}s]: ${e.response?.statusCode ?? "???"} ${e.response?.statusMessage ?? ""}",
       );
 

@@ -131,7 +131,7 @@ class Client {
 
   /// Refresh session of the account
   Future<dynamic> refreshSession() async {
-    log(LogLevel.debug,
+    log(LogLevel.info,
         "Refreshing session for ${_clientOptions.deviceAuth.accountId}");
 
     session = await auth.createOAuthToken(
@@ -195,10 +195,11 @@ class Client {
       var res = await send(
         method: "GET",
         url: "${Endpoints().accountAvatars}?accountIds=${ids.join(",")}",
-      );
+      ) as List;
 
-      (res as List)
-          .map((e) => avatars.add(Avatar(e["accountId"], e["avatarId"])));
+      for (var a in res) {
+        avatars.add(Avatar(a["accountId"], a["avatarId"]));
+      }
     }
 
     return avatars;
