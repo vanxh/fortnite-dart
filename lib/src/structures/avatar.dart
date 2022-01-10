@@ -12,9 +12,9 @@ class Avatar {
   /// Get the avatar URL
   Map<String, String> get avatarUrls => {
         "smallicon":
-            "https://fortnite-api.com/images/cosmetics/br/${avatarId.split(":").isEmpty ? "" : avatarId.split(":")[1].toLowerCase()}/smallicon.png",
+            "https://fortnite-api.com/images/cosmetics/br/${(avatarId == "" ? "" : avatarId.split(":")[1].toLowerCase())}/smallicon.png",
         "icon":
-            "https://fortnite-api.com/images/cosmetics/br/${avatarId.split(":").isEmpty ? "" : avatarId.split(":")[1].toLowerCase()}/icon.png"
+            "https://fortnite-api.com/images/cosmetics/br/${(avatarId == "" ? "" : avatarId.split(":")[1].toLowerCase())}/icon.png"
       };
 
   /// Get the avatar icon URL

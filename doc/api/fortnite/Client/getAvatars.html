@@ -78,10 +78,11 @@
     var res = await send(
       method: &quot;GET&quot;,
       url: &quot;${Endpoints().accountAvatars}?accountIds=${ids.join(&quot;,&quot;)}&quot;,
-    );
+    ) as List;
 
-    (res as List)
-        .map((e) =&gt; avatars.add(Avatar(e[&quot;accountId&quot;], e[&quot;avatarId&quot;])));
+    for (var a in res) {
+      avatars.add(Avatar(a[&quot;accountId&quot;], a[&quot;avatarId&quot;]));
+    }
   }
 
   return avatars;
@@ -155,7 +156,7 @@
 <footer>
   <span class="no-break">
     fortnite
-      1.1.3
+      1.1.6
   </span>
 
   

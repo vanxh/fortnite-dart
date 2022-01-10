@@ -56,7 +56,8 @@
 <span class="name ">send</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="send-param-method">{<span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">method</span>, </span></li>
 <li><span class="parameter" id="send-param-url"><span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span> <span class="parameter-name">url</span>, </span></li>
 <li><span class="parameter" id="send-param-body"><span class="type-annotation">dynamic</span> <span class="parameter-name">body</span>, </span></li>
-<li><span class="parameter" id="send-param-dontRetry"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">dontRetry</span> = <span class="default-value">false</span>}</span></li>
+<li><span class="parameter" id="send-param-dontRetry"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">dontRetry</span> = <span class="default-value">false</span>, </span></li>
+<li><span class="parameter" id="send-param-overrideToken"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">overrideToken</span>}</span></li>
 </ol>)
 
       
@@ -77,13 +78,14 @@
   required String url,
   dynamic body,
   bool dontRetry = false,
+  String? overrideToken,
 }) async {
   HttpResponse res = await http.send(
     method: method,
     url: url,
     headers: {
       &quot;User-Agent&quot;: _clientOptions.userAgent,
-      &quot;Authorization&quot;: &quot;bearer $session&quot;,
+      &quot;Authorization&quot;: &quot;bearer ${overrideToken ?? session}&quot;,
     },
     body: body,
   );
@@ -175,7 +177,7 @@
 <footer>
   <span class="no-break">
     fortnite
-      1.1.3
+      1.1.6
   </span>
 
   

@@ -154,13 +154,14 @@ class Client {
     required String url,
     dynamic body,
     bool dontRetry = false,
+    String? overrideToken,
   }) async {
     HttpResponse res = await http.send(
       method: method,
       url: url,
       headers: {
         "User-Agent": _clientOptions.userAgent,
-        "Authorization": "bearer $session",
+        "Authorization": "bearer ${overrideToken ?? session}",
       },
       body: body,
     );

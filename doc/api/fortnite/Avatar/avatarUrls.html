@@ -70,9 +70,9 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Map&lt;String, String&gt; get avatarUrls =&gt; {
       &quot;smallicon&quot;:
-          &quot;https:&#47;&#47;fortnite-api.com&#47;images&#47;cosmetics&#47;br&#47;${avatarId.split(&quot;:&quot;)[1].toLowerCase()}&#47;smallicon.png&quot;,
+          &quot;https:&#47;&#47;fortnite-api.com&#47;images&#47;cosmetics&#47;br&#47;${(avatarId == &quot;&quot; ? &quot;&quot; : avatarId.split(&quot;:&quot;)[1].toLowerCase())}&#47;smallicon.png&quot;,
       &quot;icon&quot;:
-          &quot;https:&#47;&#47;fortnite-api.com&#47;images&#47;cosmetics&#47;br&#47;${avatarId.split(&quot;:&quot;)[1].toLowerCase()}&#47;icon.png&quot;
+          &quot;https:&#47;&#47;fortnite-api.com&#47;images&#47;cosmetics&#47;br&#47;${(avatarId == &quot;&quot; ? &quot;&quot; : avatarId.split(&quot;:&quot;)[1].toLowerCase())}&#47;icon.png&quot;
     };</code></pre>
 </section>
 
@@ -135,7 +135,7 @@
 <footer>
   <span class="no-break">
     fortnite
-      1.1.3
+      1.1.6
   </span>
 
   

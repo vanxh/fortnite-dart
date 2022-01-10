@@ -2,6 +2,7 @@ import "client.dart";
 import "../structures/device_auth.dart";
 import "../structures/http_response.dart";
 import "../structures/external_auth.dart";
+import "../structures/epic_account_info.dart";
 import "../../resources/endpoints.dart";
 import "../../resources/auth_clients.dart";
 
@@ -100,6 +101,28 @@ class FortniteAuth {
     return await _client.send(
       method: "DELETE",
       url: "${Endpoints().oauthTokenDeleteMultiple}?killType=$killType",
+    );
+  }
+
+  /// Get account info for the epic account.
+  Future<EpicAccountInfo> getAccountInfo() async {
+    dynamic res = await _client.send(
+      method: "GET",
+      url: "${Endpoints().accountMultiple}/${_client.accountId}",
+    );
+
+    return EpicAccountInfo.fromJson(res);
+  }
+
+  /// Update account info for the epic account.
+  Future<dynamic> updateAccountInfo(Map<String, dynamic> update) async {
+    return await _client.send(
+      method: "PUT",
+      url: "${Endpoints().accountMultiple}/${_client.accountId}",
+      body: update,
+      overrideToken: await createClientAccessToken(
+        authClient: AuthClients().fortniteCNGameClient,
+      ),
     );
   }
 

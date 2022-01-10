@@ -108,3 +108,12 @@
 ## 1.1.5
 
 -   Bug fix.
+
+## 1.1.51
+
+-   Bug fix.
+
+## 1.1.6
+
+-   Get account info method.
+-   Update account info method.

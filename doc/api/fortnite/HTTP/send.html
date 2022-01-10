@@ -93,7 +93,7 @@
     ));
 
     client.log(
-      LogLevel.debug,
+      LogLevel.info,
       &quot;$method $url [${((DateTime.now().millisecondsSinceEpoch - start) &#47; 1000).toStringAsFixed(2)}s]: ${res.statusCode ?? &quot;???&quot;} ${res.statusMessage ?? &quot;&quot;}&quot;,
     );
 
@@ -103,7 +103,7 @@
     );
   } on DioError catch (e) {
     client.log(
-      LogLevel.debug,
+      LogLevel.info,
       &quot;$method $url [${((DateTime.now().millisecondsSinceEpoch - start) &#47; 1000).toStringAsFixed(2)}s]: ${e.response?.statusCode ?? &quot;???&quot;} ${e.response?.statusMessage ?? &quot;&quot;}&quot;,
     );
 
@@ -202,7 +202,7 @@
 <footer>
   <span class="no-break">
     fortnite
-      1.1.3
+      1.1.6
   </span>
 
   
