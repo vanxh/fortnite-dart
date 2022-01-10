@@ -117,3 +117,7 @@
 
 -   Get account info method.
 -   Update account info method.
+
+## 1.1.61
+
+-   Bug fix in createClientAccessToken.

@@ -80,7 +80,7 @@ class FortniteAuth {
   }) async {
     return await createOAuthToken(
       grantType: "exchange_code",
-      grantData: "exchange_code=${createExchangeCode()}",
+      grantData: "exchange_code=${await createExchangeCode()}",
       authClient: authClient,
     );
   }
