@@ -7,6 +7,7 @@ import "campaign_profile.dart";
 import "../structures/client_options.dart";
 import "../structures/http_response.dart";
 import "../structures/avatar.dart";
+import "../structures/invalid_account_exception.dart";
 import "../../resources/endpoints.dart";
 import "../../resources/auth_clients.dart";
 
@@ -51,6 +52,10 @@ class Client {
 
   /// session update controller
   final StreamController<Client> _sessionUpdateController =
+      StreamController.broadcast();
+
+  /// invalid account controller
+  final StreamController<InvalidAccountException> _invalidAccountController =
       StreamController.broadcast();
 
   /// the main client object
@@ -128,6 +133,20 @@ class Client {
 
   /// returns the session update event stream
   Stream<Client> get onSessionUpdate => _sessionUpdateController.stream;
+
+  /// returns the invalid account event stream
+  Stream<InvalidAccountException> get onInvalidAccount =>
+      _invalidAccountController.stream;
+
+  /// send invalid account error
+  void sendInvalidAccountError() {
+    _invalidAccountController.add(
+      InvalidAccountException(
+        accountId: accountId,
+        message: "Your account credentials are invalid.",
+      ),
+    );
+  }
 
   /// Refresh session of the account
   Future<dynamic> refreshSession() async {

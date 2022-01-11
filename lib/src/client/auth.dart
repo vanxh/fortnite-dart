@@ -39,6 +39,7 @@ class FortniteAuth {
     } else {
       if (res.error?["errorCode"] ==
           "errors.com.epicgames.account.invalid_account_credentials") {
+        _client.sendInvalidAccountError();
         throw Exception("Your account credentials are invalid");
       }
       throw Exception(res.error?["errorMessage"] ?? "Unknown error");

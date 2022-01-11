@@ -121,3 +121,8 @@
 ## 1.1.61
 
 -   Bug fix in createClientAccessToken.
+
+## 1.1.7
+
+-   Get MTX Platform method.
+-   Set MTX Platform method.
