@@ -126,6 +126,25 @@ class CommonCoreProfile extends McpProfile {
     return _purchases.reduce((a, b) => a + b).toInt();
   }
 
+  /// get vbucks platform
+  String get currentMtxPlatform => stats["current_mtx_platform"] ?? "";
+
+  /// set vbucks platform
+  Future<void> setMtxPlatform(String platform) async {
+    if (platform == currentMtxPlatform) return;
+
+    return await client.send(
+      method: "POST",
+      url: MCP(
+        FortniteProfile.common_core,
+        accountId: client.accountId,
+      ).SetMtxPlatform,
+      body: {
+        "newPlatform": platform,
+      },
+    );
+  }
+
   /// get epic purchase receipts for the profile
   List<String> get receipts {
     confirmInitialized();
