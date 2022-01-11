@@ -93,6 +93,7 @@
   } else {
     if (res.error?[&quot;errorCode&quot;] ==
         &quot;errors.com.epicgames.account.invalid_account_credentials&quot;) {
+      _client.sendInvalidAccountError();
       throw Exception(&quot;Your account credentials are invalid&quot;);
     }
     throw Exception(res.error?[&quot;errorMessage&quot;] ?? &quot;Unknown error&quot;);
@@ -163,7 +164,7 @@
 <footer>
   <span class="no-break">
     fortnite
-      1.1.6
+      1.1.61
   </span>
 
   

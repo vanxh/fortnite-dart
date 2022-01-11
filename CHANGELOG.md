@@ -126,3 +126,4 @@
 
 -   Get MTX Platform method.
 -   Set MTX Platform method.
+-   onInvalidAccount stream.
