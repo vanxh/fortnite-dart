@@ -127,3 +127,7 @@
 -   Get MTX Platform method.
 -   Set MTX Platform method.
 -   onInvalidAccount stream.
+
+## 1.1.8
+
+-   Athena library.

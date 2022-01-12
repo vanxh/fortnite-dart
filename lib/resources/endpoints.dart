@@ -30,6 +30,8 @@ class Endpoints {
   String get brStats => "${EpicServices().statsService}/statsproxy/api/statsv2";
   String get mcp =>
       "${EpicServices().fortniteService}/fortnite/api/game/v2/profile";
+  String get brInventory =>
+      "${EpicServices().fortniteService}/fortnite/api/game/v2/br-inventory/account";
 
   String get fortniteStatus =>
       "${EpicServices().lightswitchService}/lightswitch/api/service/bulk/status?serviceId=Fortnite";

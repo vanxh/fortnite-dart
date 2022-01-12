@@ -2,6 +2,7 @@ import "dart:async";
 import "package:logging/logging.dart";
 import "http.dart";
 import "auth.dart";
+import "athena_profile.dart";
 import "common_core_profile.dart";
 import "campaign_profile.dart";
 import "../structures/client_options.dart";
@@ -41,6 +42,9 @@ class Client {
   /// auth client for client
   late FortniteAuth auth;
 
+  /// athena profile for client
+  late AthenaProfile athena;
+
   /// common core profile for client
   late CommonCoreProfile commonCore;
 
@@ -78,6 +82,9 @@ class Client {
 
     /// initialize auth object
     auth = FortniteAuth(this);
+
+    /// initialize athena object
+    athena = AthenaProfile(this);
 
     /// initialize common core profile object
     commonCore = CommonCoreProfile(this);
