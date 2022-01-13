@@ -399,7 +399,7 @@ class CampaignProfile extends McpProfile {
     List<BannerQuest> quests = [];
 
     for (final q
-        in items.where((i) => i.templateId.startsWith("Quest:achievment_"))) {
+        in items.where((i) => i.templateId.startsWith("Quest:achievement_"))) {
       switch (q.templateId) {
         case "Quest:achievement_buildstructures":
           quests.add(
