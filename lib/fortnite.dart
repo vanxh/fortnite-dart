@@ -21,6 +21,8 @@ export "src/structures/invalid_account_exception.dart";
 export "src/structures/quest_item.dart";
 export "src/structures/athena_cosmetic.dart";
 export "src/structures/cosmetic_locker.dart";
+export "src/structures/player.dart";
+export "src/structures/banner_quest.dart";
 
 export "src/util/utils.dart";
 export "src/util/curve_table.dart";

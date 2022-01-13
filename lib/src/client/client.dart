@@ -9,6 +9,7 @@ import "../structures/client_options.dart";
 import "../structures/http_response.dart";
 import "../structures/avatar.dart";
 import "../structures/invalid_account_exception.dart";
+import "../structures/player.dart";
 import "../../resources/endpoints.dart";
 import "../../resources/auth_clients.dart";
 
@@ -230,5 +231,25 @@ class Client {
     }
 
     return avatars;
+  }
+
+  /// find players by name
+  Future<List<Player>> findPlayers(String prefix) async {
+    List<Player> players = [];
+
+    var res = await send(
+      method: "GET",
+      url:
+          "${Endpoints().userSearch}/$accountId?prefix=${Uri.encodeQueryComponent(prefix)}&platform=EPIC",
+    );
+
+    for (final p in res) {
+      players.add(Player(
+        p["accountId"],
+        displayName: (p["matches"] as List?)?.first?["value"] ?? p["accountId"],
+      ));
+    }
+
+    return players;
   }
 }

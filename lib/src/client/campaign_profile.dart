@@ -6,6 +6,7 @@ import "../structures/stw_resource.dart";
 import "../structures/stw_hero.dart";
 import "../structures/stw_worker.dart";
 import "../structures/stw_schematic.dart";
+import "../structures/banner_quest.dart";
 
 import "../../resources/fortnite_profile_ids.dart";
 import "../../resources/mcp_operations.dart";
@@ -195,6 +196,12 @@ class CampaignProfile extends McpProfile {
     return powerLevelCurve.eval(totalFORT * 4);
   }
 
+  /// returns ventures power level rating of profile
+  num get venturesPowerLevel {
+    int totalFORT = venturesFORT.values.reduce((prev, cur) => prev + cur);
+    return powerLevelCurve.eval(totalFORT * 4);
+  }
+
   /// get total FORT stats of the profile.
   /// this is the sum of FORT stats of [survivorFORT] and [researchFORT].
   Map<String, int> get fortStats {
@@ -331,5 +338,196 @@ class CampaignProfile extends McpProfile {
     }
 
     return _venturesFORT;
+  }
+
+  /// completed tutorial?
+  bool get tutorialCompleted => items
+          .where((i) => i.templateId == "Quest:homebaseonboarding")
+          .isEmpty
+      ? false
+      : (items
+                  .firstWhere((i) => i.templateId == "Quest:homebaseonboarding")
+                  .attributes["completion_hbonboarding_completezone"] ??
+              0) >
+          0;
+
+  /// account level for profile
+  num get accountLevel => stats["level"] ?? 0;
+
+  /// past max level for profile
+  num get pastMaxLevel => stats["rewards_claimed_post_max_level"] ?? 0;
+
+  /// mfa rewards claimed or not
+  bool get mfaClaimed => stats["mfa_reward_claimed"] as bool;
+
+  /// backpack size
+  num get backpackSize =>
+      50 +
+      (items
+              .firstWhere(
+                  (i) => i.templateId == "HomebaseNode:skilltree_backpacksize")
+              .quantity *
+          20) +
+      (mfaClaimed ? 10 : 0);
+
+  /// storage size
+  num get storageSize =>
+      items
+          .firstWhere((i) =>
+              i.templateId == "HomebaseNode:skilltree_stormshieldstorage")
+          .quantity *
+      20;
+
+  /// available research points
+  num get researchPoints => items
+      .firstWhere(
+          (i) => i.templateId == "Token:collectionresource_nodegatetoken01")
+      .quantity;
+
+  /// matches played
+  num get matchesPlayed => stats["matches_played"];
+
+  /// collection book level
+  num get collectionBookLevel =>
+      stats["collection_book"]?["maxBookXpLevelAchieved"] ?? 0;
+
+  /// unslot cost
+  num get unslotCost => stats["unslot_mtx_spend"];
+
+  /// get banner quests of profile
+  List<BannerQuest> get bannerQuests {
+    List<BannerQuest> quests = [];
+
+    for (final q
+        in items.where((i) => i.templateId.startsWith("Quest:achievment_"))) {
+      switch (q.templateId) {
+        case "Quest:achievement_buildstructures":
+          quests.add(
+            BannerQuest(
+              "Talented Builder",
+              q.attributes["completion_build_any_structure"],
+              500000,
+            ),
+          );
+          break;
+
+        case "Quest:achievement_destroygnomes":
+          quests.add(
+            BannerQuest(
+              "Go Gnome!",
+              q.attributes["completion_destroy_gnome"],
+              100,
+            ),
+          );
+          break;
+
+        case "Quest:achievement_loottreasurechests":
+          quests.add(
+            BannerQuest(
+              "Loot Legend",
+              q.attributes["completion_interact_treasurechest"],
+              300,
+            ),
+          );
+          break;
+
+        case "Quest:achievement_savesurvivors":
+          quests.add(
+            BannerQuest(
+              "Guardian Angel",
+              q.attributes["completion_questcollect_survivoritemdata"],
+              10000,
+            ),
+          );
+          break;
+
+        case "Quest:achievement_playwithothers":
+          quests.add(
+            BannerQuest(
+              "Plays Well with Others",
+              q.attributes["completion_quick_complete"],
+              1000,
+            ),
+          );
+          break;
+
+        case "Quest:achievement_killmistmonsters":
+          quests.add(
+            BannerQuest(
+              "Unspeakable Horrors",
+              q.attributes["completion_kill_husk_smasher"],
+              20000,
+            ),
+          );
+          break;
+
+        case "Quest:achievement_explorezones":
+          quests.add(
+            BannerQuest(
+              "World Explorer",
+              q.attributes["completion_complete_exploration_1"],
+              1500,
+            ),
+          );
+          break;
+      }
+    }
+
+    return quests;
+  }
+
+  /// get completed mission alerts
+  List<String> get completedMissionAlerts =>
+      ((stats["mission_alert_redemption_record"]?["claimData"] ?? []) as List)
+          .map((m) => m["missionAlertId"])
+          .cast<String>()
+          .toList();
+
+  /// get completed storm shields
+  Map<String, int> get completedStormShields {
+    Map<String, int> shields = {
+      "Stonewood": 0,
+      "Plankerton": 0,
+      "Canny Valley": 0,
+      "Twine Peaks": 0,
+    };
+
+    for (final i
+        in items.where((i) => i.templateId.contains("Quest:outpostquest_t"))) {
+      if (i.attributes["quest_state"] == "Claimed") {
+        List<String> split = i.templateId.split("_");
+        int ssdNum =
+            (int.tryParse((split[split.length - 2]).replaceAll("t", "")) ?? 1) -
+                1;
+        int ssdQuan = int.tryParse(split.last.replaceAll("l", "")) ?? 0;
+        String ssd = shields.keys.toList()[ssdNum];
+
+        if (shields[ssd]! < ssdQuan) {
+          shields[ssd] = ssdQuan;
+        }
+      }
+    }
+
+    return shields;
+  }
+
+  /// get endurance completions
+  Map<String, DateTime?> get enduranceCompletions {
+    Map<String, DateTime?> completions = {
+      "Stonewood": null,
+      "Plankerton": null,
+      "Canny Valley": null,
+      "Twine Peaks": null,
+    };
+
+    for (final i in items
+        .where((i) => i.templateId.contains("Quest:endurancewave30theater"))) {
+      String ssd = completions.keys
+          .toList()[(int.tryParse(i.templateId.split("").last) ?? 1) - 1];
+      completions[ssd] =
+          DateTime.tryParse(i.attributes["last_state_change_time"]);
+    }
+
+    return completions;
   }
 }

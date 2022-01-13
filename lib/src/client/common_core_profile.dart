@@ -184,4 +184,8 @@ class CommonCoreProfile extends McpProfile {
       },
     );
   }
+
+  /// has campaign access
+  bool get hasCampaignAccess =>
+      items.where((i) => i.templateId == "Token:campaignaccess").isNotEmpty;
 }

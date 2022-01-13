@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the completedMissionAlerts property from the CampaignProfile class, for the Dart programming language.">
+  <title>completedMissionAlerts property - CampaignProfile class - fortnite library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">fortnite</a></li>
+    <li><a href="../../fortnite/fortnite-library.html">fortnite</a></li>
+    <li><a href="../../fortnite/CampaignProfile-class.html">CampaignProfile</a></li>
+    <li class="self-crumb">completedMissionAlerts property</li>
+  </ol>
+  <div class="self-name">completedMissionAlerts</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-property">completedMissionAlerts</span> property 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+
+        
+<section id="getter">
+
+<section class="multi-line-signature">
+  <span class="returntype"><a href="https://api.dart.dev/stable/2.15.1/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.15.1/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  <span class="name ">completedMissionAlerts</span>
+  
+
+</section>
+
+
+<section class="desc markdown">
+  <p>get completed mission alerts</p>
+</section>
+
+
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">List&lt;String&gt; get completedMissionAlerts =&gt;
+    ((stats[&quot;mission_alert_redemption_record&quot;]?[&quot;claimData&quot;] ?? []) as List)
+        .map((m) =&gt; m[&quot;missionAlertId&quot;])
+        .cast&lt;String&gt;()
+        .toList();</code></pre>
+</section>
+
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">fortnite</a></li>
+  <li><a href="../../fortnite/fortnite-library.html">fortnite</a></li>
+  <li><a href="../../fortnite/CampaignProfile-class.html">CampaignProfile</a></li>
+  <li class="self-crumb">completedMissionAlerts property</li>
+</ol>
+
+
+    <h5>CampaignProfile class</h5>
+    <ol>
+
+    <li class="section-title"><a href="../../fortnite/CampaignProfile-class.html#constructors">Constructors</a></li>
+    <li><a href="../../fortnite/CampaignProfile/CampaignProfile.html">CampaignProfile</a></li>
+
+
+    <li class="section-title">
+      <a href="../../fortnite/CampaignProfile-class.html#instance-properties">Properties</a>
+    </li>
+    <li class="inherited"><a href="../../fortnite/McpProfile/accountId.html">accountId</a></li>
+    <li><a href="../../fortnite/CampaignProfile/accountLevel.html">accountLevel</a></li>
+    <li><a href="../../fortnite/CampaignProfile/accountResources.html">accountResources</a></li>
+    <li><a href="../../fortnite/CampaignProfile/backpackSize.html">backpackSize</a></li>
+    <li><a href="../../fortnite/CampaignProfile/bannerQuests.html">bannerQuests</a></li>
+    <li class="inherited"><a href="../../fortnite/McpProfile/client.html">client</a></li>
+    <li><a href="../../fortnite/CampaignProfile/collectionBookLevel.html">collectionBookLevel</a></li>
+    <li><a href="../../fortnite/CampaignProfile/commandoHeroes.html">commandoHeroes</a></li>
+    <li><a href="../../fortnite/CampaignProfile/completedMissionAlerts.html">completedMissionAlerts</a></li>
+    <li><a href="../../fortnite/CampaignProfile/completedStormShields.html">completedStormShields</a></li>
+    <li><a href="../../fortnite/CampaignProfile/constructorHeroes.html">constructorHeroes</a></li>
+    <li class="inherited"><a href="../../fortnite/McpProfile/created.html">created</a></li>
+    <li><a href="../../fortnite/CampaignProfile/enduranceCompletions.html">enduranceCompletions</a></li>
+    <li><a href="../../fortnite/CampaignProfile/fortStats.html">fortStats</a></li>
+    <li class="inherited"><a href="https://api.dart.dev/stable/2.15.1/dart-core/Object/hashCode.html">hashCode</a></li>
+    <li><a href="../../fortnite/CampaignProfile/heroes.html">heroes</a></li>
+    <li class="inherited"><a href="../../fortnite/McpProfile/initialized.html">initialized</a></li>
+    <li class="inherited"><a href="../../fortnite/McpProfile/items.html">items</a></li>
+    <li><a href="../../fortnite/CampaignProfile/managers.html">managers</a></li>
+    <li><a href="../../fortnite/CampaignProfile/matchesPlayed.html">matchesPlayed</a></li>
+    <li><a href="../../fortnite/CampaignProfile/mfaClaimed.html">mfaClaimed</a></li>
+    <li><a href="../../fortnite/CampaignProfile/ninjaHeroes.html">ninjaHeroes</a></li>
+    <li><a href="../../fortnite/CampaignProfile/outlanderHeroes.html">outlanderHeroes</a></li>
+    <li><a href="../../fortnite/CampaignProfile/pastMaxLevel.html">pastMaxLevel</a></li>
+    <li><a href="../../fortnite/CampaignProfile/powerLevel.html">powerLevel</a></li>
+    <li><a href="../../fortnite/CampaignProfile/powerLevelCurve.html">powerLevelCurve</a></li>
+    <li class="inherited"><a href="../../fortnite/McpProfile/profileId.html">profileId</a></li>
+    <li><a href="../../fortnite/CampaignProfile/researchFORT.html">researchFORT</a></li>
+    <li><a href="../../fortnite/CampaignProfile/researchPoints.html">researchPoints</a></li>
+    <li class="inherited"><a href="https://api.dart.dev/stable/2.15.1/dart-core/Object/runtimeType.html">runtimeType</a></li>
+    <li class="inherited"><a href="../../fortnite/McpProfile/rvn.html">rvn</a></li>
+    <li><a href="../../fortnite/CampaignProfile/schematics.html">schematics</a></li>
+    <li class="inherited"><a href="../../fortnite/McpProfile/serverTime.html">serverTime</a></li>
+    <li class="inherited"><a href="../../fortnite/McpProfile/stats.html">stats</a></li>
+    <li><a href="../../fortnite/CampaignProfile/storageSize.html">storageSize</a></li>
+    <li><a href="../../fortnite/CampaignProfile/survivorFORT.html">survivorFORT</a></li>
+    <li><a href="../../fortnite/CampaignProfile/survivorSquads.html">survivorSquads</a></li>
+    <li><a href="../../fortnite/CampaignProfile/traps.html">traps</a></li>
+    <li><a href="../../fortnite/CampaignProfile/tutorialCompleted.html">tutorialCompleted</a></li>
+    <li><a href="../../fortnite/CampaignProfile/unslotCost.html">unslotCost</a></li>
+    <li class="inherited"><a href="../../fortnite/McpProfile/updated.html">updated</a></li>
+    <li><a href="../../fortnite/CampaignProfile/venturesFORT.html">venturesFORT</a></li>
+    <li><a href="../../fortnite/CampaignProfile/venturesPowerLevel.html">venturesPowerLevel</a></li>
+    <li><a href="../../fortnite/CampaignProfile/weapons.html">weapons</a></li>
+    <li><a href="../../fortnite/CampaignProfile/workers.html">workers</a></li>
+
+    <li class="section-title"><a href="../../fortnite/CampaignProfile-class.html#instance-methods">Methods</a></li>
+    <li class="inherited"><a href="../../fortnite/McpProfile/confirmInitialized.html">confirmInitialized</a></li>
+    <li><a href="../../fortnite/CampaignProfile/init.html">init</a></li>
+    <li class="inherited"><a href="https://api.dart.dev/stable/2.15.1/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li class="inherited"><a href="https://api.dart.dev/stable/2.15.1/dart-core/Object/toString.html">toString</a></li>
+
+    <li class="section-title inherited"><a href="../../fortnite/CampaignProfile-class.html#operators">Operators</a></li>
+    <li class="inherited"><a href="https://api.dart.dev/stable/2.15.1/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    fortnite
+      1.1.9
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+

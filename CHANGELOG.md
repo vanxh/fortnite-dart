@@ -131,3 +131,10 @@
 ## 1.1.8
 
 -   Athena library.
+
+## 1.1.9
+
+-   Player object.
+-   Banner quest object.
+-   findPlayers method to client.
+-   New campaign getters.
