@@ -138,3 +138,15 @@
 -   Banner quest object.
 -   findPlayers method to client.
 -   New campaign getters.
+
+## 1.2.0
+
+-   Get and Post methods to client (override methods to parent Send method).
+-   Skip tutorial method to campaign.
+-   Survivor squad preset object.
+-   Survivor squad preset getter.
+-   Equip survivor squad preset method.
+-   Upgrade homebase node method.
+-   Collect research points method.
+-   Upgrade research stat method.
+-   Pending difficulty rewards getter.

@@ -1,6 +1,6 @@
 name: fortnite
 description: A fortnite api manager library in dart. This library allows you to easily communicate with fortnite api and manage your account.
-version: 1.1.91
+version: 1.2.0
 homepage: https://github.com/vanxh/fortnite-dart
 repository: https://github.com/vanxh/fortnite-dart
 
@@ -11,7 +11,6 @@ dependencies:
     logging: ^1.0.2
     dio: ^4.0.4
     numeral: ^1.2.5
-#   path: ^1.8.0
 
 dev_dependencies:
     lints: ^1.0.0

@@ -7,6 +7,7 @@ import "../structures/stw_hero.dart";
 import "../structures/stw_worker.dart";
 import "../structures/stw_schematic.dart";
 import "../structures/banner_quest.dart";
+import "../structures/survivor_squad_preset.dart";
 
 import "../../resources/fortnite_profile_ids.dart";
 import "../../resources/mcp_operations.dart";
@@ -529,5 +530,110 @@ class CampaignProfile extends McpProfile {
     }
 
     return completions;
+  }
+
+  /// get pending difficulty rewards
+  Map<String, int> get pendingDifficultyRewards {
+    Map<String, int> rewards = {};
+
+    var _r = stats["difficulty_increase_rewards_record"]?["pendingRewards"];
+    if (_r == null) return rewards;
+
+    for (final reward in _r) {
+      for (final item in reward?["difficultyIncreaseMissionRewards"]
+          ?["items"]) {
+        if (rewards["itemType"] == null) {
+          rewards["itemType"] = 0;
+        }
+
+        rewards["itemType"] =
+            (rewards["itemType"] ?? 0) + (int.tryParse(item["quantity"]) ?? 0);
+      }
+    }
+
+    return rewards;
+  }
+
+  /// collect research points
+  Future<void> collectResearchPoints() async {
+    confirmInitialized();
+
+    return await client.post(
+      MCP(profileId, accountId: client.accountId).ClaimCollectedResources,
+      body: {
+        "collectorsToClaim": [
+          items
+              .firstWhere((i) =>
+                  i.templateId == "Token:collectionresource_nodegatetoken01")
+              .id,
+        ],
+      },
+    );
+  }
+
+  /// upgrade research stat
+  Future<void> upgradeResearchStat(String stat) async {
+    return await client.post(
+      MCP(profileId, accountId: client.accountId).PurchaseResearchStatUpgrade,
+      body: {
+        "statId": stat,
+      },
+    );
+  }
+
+  /// updgrade a homebase node
+  Future<void> upgradeHomebaseNode(String nodeId) async {
+    return await client.post(
+      MCP(profileId, accountId: client.accountId).PurchaseOrUpgradeHomebaseNode,
+      body: {
+        "nodeId": nodeId,
+      },
+    );
+  }
+
+  /// skip campaign tutorial if not completed
+  Future<void> skipTutorial() async {
+    confirmInitialized();
+
+    if (tutorialCompleted) {
+      throw Exception(
+          "You have already completed the tutorial. You can't skip it again.");
+    }
+
+    return await client.post(
+      MCP(profileId, accountId: client.accountId).SkipTutorial,
+      body: {},
+    );
+  }
+
+  /// get current survivor squad preset
+  SurvivorSquadPreset get survivorSquadPreset {
+    confirmInitialized();
+
+    List<String> _characterIds = [];
+    List<String> _squadIds = [];
+    List<int> _slotIndices = [];
+
+    for (final worker in workers) {
+      if (worker.squad == null) continue;
+
+      _characterIds.add(worker.id);
+      _squadIds.add(worker.squad?["id"] ?? "");
+      _slotIndices.add(worker.squad?["slotIdx"] ?? 0);
+    }
+
+    return SurvivorSquadPreset(
+      characterIds: _characterIds,
+      squadIds: _squadIds,
+      slotIndices: _slotIndices,
+    );
+  }
+
+  /// set a survivor squad preset
+  Future<void> equipSurvivorSquadPreset(SurvivorSquadPreset preset) async {
+    return await client.post(
+      MCP(profileId, accountId: client.accountId).SkipTutorial,
+      body: preset.toJson(),
+    );
   }
 }

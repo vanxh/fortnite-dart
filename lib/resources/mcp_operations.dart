@@ -138,4 +138,6 @@ class MCP {
   String get UnloadWarehouse => url(operation: "UnloadWarehouse");
   String get DestroyWorldItems => url(operation: "DestroyWorldItems");
   String get StorageTransfer => url(operation: "StorageTransfer");
+  String get PurchaseResearchStatUpgrade =>
+      url(operation: "PurchaseResearchStatUpgrade");
 }
