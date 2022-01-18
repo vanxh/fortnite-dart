@@ -155,3 +155,7 @@
 -   Daily rewards list.
 -   Daily reward claim response object.
 -   Claim daily reward method.
+-   isStormKing bool getter to stw schematic.
+-   Storm king quests map.
+-   Storm king quest getter.
+-   Storm king schematics getter.

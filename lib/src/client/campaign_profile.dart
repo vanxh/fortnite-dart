@@ -13,6 +13,7 @@ import "../structures/claim_daily_response.dart";
 import "../../resources/fortnite_profile_ids.dart";
 import "../../resources/mcp_operations.dart";
 import "../../resources/homebase_rating_keys.dart";
+import "../../resources/storm_king_quests.dart";
 
 import "../util/curve_table.dart";
 
@@ -531,6 +532,48 @@ class CampaignProfile extends McpProfile {
     }
 
     return completions;
+  }
+
+  /// get current storm king quest
+  StormKingQuest get stormKingQuest {
+    confirmInitialized();
+
+    if (completedStormShields["Twine Peaks"]! < 5) {
+      return StormKingQuest(
+        "Quest:twinepeaks",
+        "Twine Peaks Stormshield",
+        "Complete Twine Peaks Stormshield Defense 5",
+        10,
+      )..completionCurrent = 0;
+    }
+
+    var filtered =
+        items.where((i) => i.templateId.startsWith("Quest:stw_stormkinghard"));
+
+    if (filtered.isEmpty) {
+      throw Exception("No Storm King quests found");
+    }
+
+    return stormKingQuests[filtered.first.templateId]!;
+  }
+
+  /// get storm king schematics
+  List<STWSchematic> get stormKingSchematics =>
+      schematics.where((s) => s.isStormKing).toList();
+
+  /// get storm king schematics count
+  Map<String, int> get stormKingSchematicsCount {
+    Map<String, int> count = {};
+
+    for (final s in stormKingSchematics) {
+      if (count.containsKey(s.templateId)) {
+        count[s.templateId] = count[s.templateId]! + 1;
+      } else {
+        count[s.templateId] = 1;
+      }
+    }
+
+    return count;
   }
 
   /// get pending difficulty rewards

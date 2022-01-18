@@ -46,4 +46,7 @@ class STWSchematic extends ProfileItem {
   /// its null if the schematic is a trap.
   String? get oreOrCrystal =>
       oreOrCrystalRegex.firstMatch(templateId.split(":")[1])?.group(1);
+
+  /// is it a storm king schematic
+  bool get isStormKing => templateId.contains("_stormking_");
 }
