@@ -11,4 +11,8 @@ test/
 # device auth
 device_auth.json
 
+# generator
 gdart.dart
+
+# docs
+doc/api
