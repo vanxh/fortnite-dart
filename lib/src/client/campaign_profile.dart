@@ -554,6 +554,28 @@ class CampaignProfile extends McpProfile {
     return rewards;
   }
 
+  /// get research levels
+  Map<String, int> get researchLevels {
+    confirmInitialized();
+
+    return stats["research_levels"]?.cast<String, int>() ?? {};
+  }
+
+  /// get pending research levels (research levels that are below 120)
+  Map<String, int> get pendingResearchLevels {
+    confirmInitialized();
+
+    Map<String, int> levels = {};
+
+    for (final r in researchLevels.entries) {
+      if (r.value < 120) {
+        levels[r.key] = r.value;
+      }
+    }
+
+    return levels;
+  }
+
   /// collect research points
   Future<void> collectResearchPoints() async {
     confirmInitialized();

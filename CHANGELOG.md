@@ -150,3 +150,6 @@
 -   Collect research points method.
 -   Upgrade research stat method.
 -   Pending difficulty rewards getter.
+-   Research levels getter.
+-   Pending research levels getter.
+-   Daily rewards list.
