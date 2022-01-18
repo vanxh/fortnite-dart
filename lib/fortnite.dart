@@ -24,6 +24,7 @@ export "src/structures/cosmetic_locker.dart";
 export "src/structures/player.dart";
 export "src/structures/banner_quest.dart";
 export "src/structures/survivor_squad_preset.dart";
+export "src/structures/claim_daily_response.dart";
 
 export "src/util/utils.dart";
 export "src/util/curve_table.dart";

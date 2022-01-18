@@ -8,6 +8,7 @@ import "../structures/stw_worker.dart";
 import "../structures/stw_schematic.dart";
 import "../structures/banner_quest.dart";
 import "../structures/survivor_squad_preset.dart";
+import "../structures/claim_daily_response.dart";
 
 import "../../resources/fortnite_profile_ids.dart";
 import "../../resources/mcp_operations.dart";
@@ -656,6 +657,18 @@ class CampaignProfile extends McpProfile {
     return await client.post(
       MCP(profileId, accountId: client.accountId).SkipTutorial,
       body: preset.toJson(),
+    );
+  }
+
+  /// claim daily rewards
+  Future<ClaimDailyRewardResponse> claimDailyReward() async {
+    var res = await client.post(
+      MCP(profileId, accountId: client.accountId).ClaimLoginReward,
+    );
+    return ClaimDailyRewardResponse.fromDay(
+      (res["notifications"] as List?)?.first?["daysLoggedIn"] ?? 0,
+      ((res["notifications"] as List?)?.first?["items"] as List?)?.isEmpty ??
+          true,
     );
   }
 }

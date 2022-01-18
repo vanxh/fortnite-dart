@@ -226,7 +226,7 @@ class Client {
   /// post request to [url] with [body].
   Future<dynamic> post(
     String url, {
-    dynamic body,
+    dynamic body = const {},
     String? overrideToken,
   }) async =>
       await send(

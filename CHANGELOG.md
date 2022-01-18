@@ -153,3 +153,5 @@
 -   Research levels getter.
 -   Pending research levels getter.
 -   Daily rewards list.
+-   Daily reward claim response object.
+-   Claim daily reward method.
