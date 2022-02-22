@@ -5,7 +5,7 @@ import "../../resources/fortnite_profile_ids.dart";
 
 class STWHeroLoadout extends ProfileItem {
   late int loadoutIndex;
-  late ProfileItem teamPerk;
+  late ProfileItem? teamPerk;
   late STWHero commander;
   List<STWHero> followers = [];
   late Iterable<STWGadget> gadgets;
@@ -28,8 +28,11 @@ class STWHeroLoadout extends ProfileItem {
         ) {
     loadoutIndex = attributes["loadout_index"];
 
-    teamPerk = client.campaign.items
-        .firstWhere((i) => i.id == attributes["team_perk"]);
+    var _tpsearch =
+        client.campaign.items.where((i) => i.id == attributes["team_perk"]);
+    if (_tpsearch.isNotEmpty) {
+      teamPerk = _tpsearch.first;
+    }
 
     commander = client.campaign.heroes
         .firstWhere((h) => h.id == attributes["crew_members"]["commanderslot"]);
@@ -38,9 +41,13 @@ class STWHeroLoadout extends ProfileItem {
         .values
         .where((id) => id != commander.id);
     for (final _f in _followers) {
-      final _hero =
-          client.campaign.heroes.firstWhere((h) => h.id == _f as String);
-      followers.add(_hero);
+      try {
+        final _hero =
+            client.campaign.heroes.firstWhere((h) => h.id == _f as String);
+        followers.add(_hero);
+      } catch (_) {
+        // IGNORE
+      }
     }
 
     gadgets = attributes["gadgets"].map<STWGadget>((gadget) =>

@@ -171,3 +171,11 @@
 ## 1.2.3
 
 -   Add hero loadouts to profile.
+
+## 1.2.4
+
+-   Bug fix.
+
+## 1.2.5
+
+-   Bug fix.
