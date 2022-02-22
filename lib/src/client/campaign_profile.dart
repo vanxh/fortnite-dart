@@ -697,8 +697,10 @@ class CampaignProfile extends McpProfile {
 
   /// set a survivor squad preset
   Future<void> equipSurvivorSquadPreset(SurvivorSquadPreset preset) async {
+    await client
+        .post(MCP(profileId, accountId: client.accountId).UnassignAllSquads);
     return await client.post(
-      MCP(profileId, accountId: client.accountId).SkipTutorial,
+      MCP(profileId, accountId: client.accountId).AssignWorkerToSquadBatch,
       body: preset.toJson(),
     );
   }

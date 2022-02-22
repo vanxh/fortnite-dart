@@ -26,7 +26,9 @@ class ClaimDailyRewardResponse {
         rewardsByDay: dailyRewards
             .getRange(
               (_day - 1) % 336,
-              ((_day - 1) % 336) + 7,
+              ((_day - 1) % 336) + 7 >= dailyRewards.length
+                  ? dailyRewards.length
+                  : ((_day - 1) % 336) + 7,
             )
             .toList(),
       );
