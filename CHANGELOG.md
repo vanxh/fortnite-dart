@@ -159,3 +159,7 @@
 -   Storm king quests map.
 -   Storm king quest getter.
 -   Storm king schematics getter.
+
+## 1.2.1
+
+-   Bug fixes.
