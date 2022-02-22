@@ -251,7 +251,10 @@ class CampaignProfile extends McpProfile {
     int tech = 0;
 
     for (var squad in survivorSquads.values.toList()) {
-      dynamic leadWorker = squad.firstWhere((s) => s.squad?["slotIdx"] == 0);
+      STWWorker? leadWorker;
+      if (squad.where((s) => s.squad?["slotIdx"] == 0).isNotEmpty) {
+        leadWorker = squad.firstWhere((s) => s.squad?["slotIdx"] == 0);
+      }
 
       for (STWWorker worker in squad) {
         num totalBonus = worker.rating;
