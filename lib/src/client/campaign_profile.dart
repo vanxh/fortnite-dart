@@ -9,6 +9,7 @@ import "../structures/stw_schematic.dart";
 import "../structures/banner_quest.dart";
 import "../structures/survivor_squad_preset.dart";
 import "../structures/claim_daily_response.dart";
+import "../structures/stw_hero_loadout.dart";
 
 import "../../resources/fortnite_profile_ids.dart";
 import "../../resources/mcp_operations.dart";
@@ -130,45 +131,67 @@ class CampaignProfile extends McpProfile {
   }
 
   /// get account resources of the profile
-  List<AccountResource> get accountResources =>
-      items.whereType<AccountResource>().toList();
+  Iterable<AccountResource> get accountResources =>
+      items.whereType<AccountResource>();
 
   /// get stw heroes of the profile
-  List<STWHero> get heroes => items.whereType<STWHero>().toList();
+  Iterable<STWHero> get heroes => items.whereType<STWHero>();
 
   /// ninja type heroes of the profile
-  List<STWHero> get ninjaHeroes =>
-      heroes.where((hero) => hero.type == "ninja").toList();
+  Iterable<STWHero> get ninjaHeroes =>
+      heroes.where((hero) => hero.type == "ninja");
 
   /// constructor type heroes of the profile
-  List<STWHero> get constructorHeroes =>
-      heroes.where((hero) => hero.type == "constructor").toList();
+  Iterable<STWHero> get constructorHeroes =>
+      heroes.where((hero) => hero.type == "constructor");
 
   /// commando type heroes of the profile
-  List<STWHero> get commandoHeroes =>
-      heroes.where((hero) => hero.type == "commando").toList();
+  Iterable<STWHero> get commandoHeroes =>
+      heroes.where((hero) => hero.type == "commando");
 
   /// outlander type heroes of the profile
-  List<STWHero> get outlanderHeroes =>
-      heroes.where((hero) => hero.type == "outlander").toList();
+  Iterable<STWHero> get outlanderHeroes =>
+      heroes.where((hero) => hero.type == "outlander");
 
   /// get stw schematics of the profile
-  List<STWSchematic> get schematics => items.whereType<STWSchematic>().toList();
+  Iterable<STWSchematic> get schematics => items.whereType<STWSchematic>();
 
   /// get stw weapons of the profile
-  List<STWSchematic> get weapons =>
-      schematics.where((schematic) => schematic.type == "weapon").toList();
+  Iterable<STWSchematic> get weapons =>
+      schematics.where((schematic) => schematic.type == "weapon");
 
   /// get stw trap of the profile
-  List<STWSchematic> get traps =>
-      schematics.where((schematic) => schematic.type == "trap").toList();
+  Iterable<STWSchematic> get traps =>
+      schematics.where((schematic) => schematic.type == "trap");
 
   /// get workers of the profile
-  List<STWWorker> get workers => items.whereType<STWWorker>().toList();
+  Iterable<STWWorker> get workers => items.whereType<STWWorker>();
 
   /// get manager workers of the profile
-  List<STWWorker> get managers =>
-      workers.where((worker) => worker.type == "manager").toList();
+  Iterable<STWWorker> get managers =>
+      workers.where((worker) => worker.type == "manager");
+
+  /// get hero loadouts of the profile
+  Iterable<STWHeroLoadout> get heroLoadouts {
+    var loadouts = <STWHeroLoadout>[];
+
+    for (var i in items) {
+      if (i.templateId.startsWith("CampaignHeroLoadout")) {
+        loadouts.add(
+          STWHeroLoadout(
+            client,
+            id: i.id,
+            profileId: profileId,
+            templateId: i.templateId,
+            attributes: i.attributes,
+            quantity: i.quantity,
+          ),
+        );
+      }
+    }
+
+    return loadouts;
+  }
 
   /// returns survivor squads of the profile.
   /// there are 8 survivors squads in total.
