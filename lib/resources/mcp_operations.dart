@@ -140,4 +140,6 @@ class MCP {
   String get StorageTransfer => url(operation: "StorageTransfer");
   String get PurchaseResearchStatUpgrade =>
       url(operation: "PurchaseResearchStatUpgrade");
+  String get ClaimDifficultyIncreaseRewards =>
+      url(operation: "ClaimDifficultyIncreaseRewards");
 }

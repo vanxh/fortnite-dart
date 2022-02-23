@@ -646,6 +646,15 @@ class CampaignProfile extends McpProfile {
     return levels;
   }
 
+  /// Battle royale xp collected from stw
+  int get sbx {
+    confirmInitialized();
+
+    return items
+        .firstWhere((i) => i.templateId == "Token:stw_accolade_tracker")
+        .attributes["daily_xp"] as int;
+  }
+
   /// collect research points
   Future<void> collectResearchPoints() async {
     confirmInitialized();
@@ -741,5 +750,28 @@ class CampaignProfile extends McpProfile {
       ((res["notifications"] as List?)?.first?["items"] as List?)?.isEmpty ??
           true,
     );
+  }
+
+  /// claim pending difficulty rewards
+  Future<void> collectMissionAlertRewards() async {
+    return await client.post(
+        MCP(FortniteProfile.campaign, accountId: client.accountId)
+            .ClaimMissionAlertRewards);
+  }
+
+  /// claim pending difficulty rewards
+  Future<void> collectDifficultyRewards() async {
+    return await client.post(
+        MCP(FortniteProfile.campaign, accountId: client.accountId)
+            .ClaimDifficultyIncreaseRewards);
+  }
+
+  /// claim pending collection book level rewards
+  Future<void> collectCollectionBookRewards() async {
+    await client.post(MCP(FortniteProfile.campaign, accountId: client.accountId)
+        .ClaimCollectionBookPageRewards);
+    await client.post(MCP(FortniteProfile.campaign, accountId: client.accountId)
+        .ClaimCollectionBookRewards);
+    return;
   }
 }

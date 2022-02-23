@@ -179,3 +179,8 @@
 ## 1.2.5
 
 -   Bug fix.
+
+## 1.2.6
+
+-   STW Reward claim methods.
+-   sbx getter in campaign profile.
