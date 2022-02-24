@@ -675,15 +675,20 @@ class CampaignProfile extends McpProfile {
   Future<void> collectResearchPoints() async {
     confirmInitialized();
 
+    String collectorId = items
+            .where((i) =>
+                i.templateId == "Token:collectionresource_nodegatetoken01")
+            .isNotEmpty
+        ? items
+            .firstWhere((i) =>
+                i.templateId == "Token:collectionresource_nodegatetoken01")
+            .id
+        : "";
+
     return await client.post(
       MCP(profileId, accountId: client.accountId).ClaimCollectedResources,
       body: {
-        "collectorsToClaim": [
-          items
-              .firstWhere((i) =>
-                  i.templateId == "Token:collectionresource_nodegatetoken01")
-              .id,
-        ],
+        "collectorsToClaim": [collectorId],
       },
     );
   }

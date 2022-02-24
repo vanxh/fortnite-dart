@@ -126,4 +126,19 @@ class InventoryProfile extends McpProfile {
     client.log(
         LogLevel.info, "Inventory profile module initialized [$accountId]");
   }
+
+  /// get weapons
+  Iterable<STWWeapon> get weapons => items.whereType<STWWeapon>();
+
+  /// get traps
+  Iterable<STWTrap> get traps => items.whereType<STWTrap>();
+
+  /// get ingredients
+  Iterable<STWIngredient> get ingredients => items.whereType<STWIngredient>();
+
+  /// get world items
+  Iterable<STWWorldItem> get worldItems => items.whereType<STWWorldItem>();
+
+  /// get ammo
+  Iterable<STWAmmo> get ammo => items.whereType<STWAmmo>();
 }
