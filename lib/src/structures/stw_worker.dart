@@ -39,16 +39,17 @@ class STWWorker extends ProfileItem {
   int get tier => int.parse(
       tierRegex.firstMatch(templateId.split(":")[1])?.group(1) ?? "01");
 
-  /// get rarity
-  String get rarity {
+  /// get rarity enum
+  String get rarityEnum {
     List fields = templateId.split(":")[1].split("_");
     fields.removeAt(0);
     fields.removeLast();
 
-    String r = type == "manager" ? fields.first : fields.last;
-
-    return stwRarities[r] ?? r;
+    return type == "manager" ? fields.first : fields.last;
   }
+
+  /// get rarity
+  String get rarity => stwRarities[rarityEnum] ?? rarityEnum;
 
   /// get gender
   String get gender =>
@@ -86,56 +87,12 @@ class STWWorker extends ProfileItem {
   /// is the worker a leader
   bool get isLeader => type == "manager";
 
-  /// rarity value of worker.
-  /// its an int between 0-6
-  int get rarityValue {
-    return {
-          "common": [1, 1],
-          "uncommon": [2, 2],
-          "rare": [3, 3],
-          "epic": [4, 4],
-          "legendary": [5, 5],
-          "mythic": [6, 0],
-        }[rarity]?[isLeader ? 1 : 0] ??
-        0;
-  }
-
-  /// get evo constant of worker.
-  /// its a num between 0-9.85
-  num get evoConstant {
-    return {
-          1: [5, 5],
-          2: [6.35, 6.35],
-          3: [7, 7],
-          4: [8, 8],
-          5: [9, 9],
-          6: [9.85, 0],
-        }[rarityValue]?[isLeader ? 1 : 0] ??
-        0;
-  }
-
-  /// get level constant of survivor.
-  /// its a num between 0-1.645
-  num get levelConstant {
-    return {
-          1: [1, 1],
-          2: [1.08, 1.08],
-          3: [1.245, 1.245],
-          4: [1.374, 1.374],
-          5: [1.5, 1.5],
-          6: [1.645, 0],
-        }[rarityValue]?[isLeader ? 1 : 0] ??
-        0;
-  }
-
   /// get power level of the worker.
-  /// depends on [tier] , [level] , [rarityValue] and [isLeader].
   num get rating {
-    return ((5 * rarityValue) -
-            (isLeader ? 0 : 5) +
-            (level - 1) * levelConstant +
-            (tier - 1) * evoConstant)
-        .round();
+    final String key = isLeader
+        ? "manager_${rarityEnum}_t0$tier"
+        : "default_${rarityEnum}_t0$tier";
+    return survivorItemRating[key]?.eval(level) ?? 0.0;
   }
 
   /// the workers lead bonus.

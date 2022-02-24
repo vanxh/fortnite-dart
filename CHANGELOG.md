@@ -184,3 +184,9 @@
 
 -   STW Reward claim methods.
 -   sbx getter in campaign profile.
+
+## 1.3.0
+
+-   STW Power level calculation algorithm changed.
+-   Added rating to everything possible.
+-   Added inventory profile manager.

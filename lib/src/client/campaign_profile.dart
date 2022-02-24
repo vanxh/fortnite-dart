@@ -1,5 +1,8 @@
 import "client.dart";
 import "mcp_profile.dart";
+import "backpack_profile.dart";
+import "storage_profile.dart";
+import "ventures_backpack_profile.dart";
 
 import "../structures/profile_item.dart";
 import "../structures/stw_resource.dart";
@@ -23,12 +26,25 @@ class CampaignProfile extends McpProfile {
   /// power level curve table reader
   CurveTable powerLevelCurve = CurveTable(homebaseRatingKeys);
 
+  /// [BackpackProfile] backpack profile manager
+  late BackpackProfile backpack;
+
+  /// [StorageProfile] storage profile manager
+  late StorageProfile storage;
+
+  /// [VenturesBackpackProfile] ventures backpack profile manager
+  late VenturesBackpackProfile venturesBackpack;
+
   /// campaign profile object
   CampaignProfile(Client client)
       : super(
           client,
           FortniteProfile.campaign,
-        );
+        ) {
+    backpack = BackpackProfile(client);
+    storage = StorageProfile(client);
+    venturesBackpack = VenturesBackpackProfile(client);
+  }
 
   /// init the profile
   Future<dynamic> init(String? accId) async {

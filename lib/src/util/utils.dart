@@ -2,6 +2,9 @@ import "package:dio/dio.dart";
 import "../structures/device_auth.dart";
 import "../../resources/endpoints.dart";
 import "../../resources/auth_clients.dart";
+import "../../resources/base_item_rating.dart";
+import "../../resources/survivor_item_rating.dart";
+import "curve_table.dart";
 
 /// parses an authorization code
 dynamic parseAuthorizationCode(String authCode) {
@@ -121,3 +124,25 @@ RegExp schematicRarityRegex = RegExp(r"_(c|uc|r|vr|sr|ur)_(?=(crystal|ore|t))");
 
 /// regex to get if a schematic is ore or crystal or null
 RegExp oreOrCrystalRegex = RegExp(r"(crystal|ore)_t[0-9]+");
+
+/// function to map curve tables
+Map<String, CurveTable> mapCurveTables(Map struc) {
+  final Iterable<MapEntry> entries1 = struc.entries;
+  final Iterable<MapEntry<String, CurveTable>> entries2 = entries1.map(
+    (kv) => MapEntry(
+      (kv.key as String).toLowerCase(),
+      CurveTable((kv.value["Keys"] as List)
+          .map((kv) => [kv["KeyTime"] as double, kv["KeyValue"] as double])
+          .toList()),
+    ),
+  );
+  return Map.fromEntries(entries2);
+}
+
+/// curve table for any item other than survivor.
+Map<String, CurveTable> baseItemRating =
+    mapCurveTables(baseItemRatingCurveTable[0]["ExportValue"] as Map);
+
+/// curve table for survivor.
+Map<String, CurveTable> survivorItemRating =
+    mapCurveTables(survivorItemRatingCurveTable[0]["ExportValue"] as Map);

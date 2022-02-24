@@ -32,16 +32,23 @@ class STWHero extends ProfileItem {
   int get tier => int.parse(
       tierRegex.firstMatch(templateId.split(":")[1])?.group(1) ?? "01");
 
+  /// get rarity enum
+  String get rarityEnum {
+    List fields = templateId.split(":")[1].split("_");
+    fields.removeAt(0);
+    fields.removeLast();
+
+    return fields.last;
+  }
+
   /// get rarity
-  String get rarity =>
-      stwRarities[templateId
-          .split(":")[1]
-          .split("_")[templateId.split(":")[1].split("_").length - 2]] ??
-      templateId
-          .split(":")[1]
-          .split("_")[templateId.split(":")[1].split("_").length - 2];
+  String get rarity => stwRarities[rarityEnum] ?? rarityEnum;
 
   /// get gender
   String get gender =>
       attributes["gender"].toString() == "1" ? "male" : "female";
+
+  /// get power level of the hero.
+  num get rating =>
+      baseItemRating["default_${rarityEnum}_t0$tier"]?.eval(level) ?? 0.0;
 }
