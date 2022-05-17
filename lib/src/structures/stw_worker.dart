@@ -61,7 +61,7 @@ class STWWorker extends ProfileItem {
       type == "manager" ? attributes["managerSynergy"] : null;
 
   /// squad data of worker
-  Map<String, dynamic>? get squad => attributes["squad_id"] != ""
+  Map<String, dynamic>? get squad => (attributes["squad_id"] != "" && attributes["squad_id"] != null)
       ? {
           "id": attributes["squad_id"],
           "name": attributes["squad_id"].split("_")[3],
